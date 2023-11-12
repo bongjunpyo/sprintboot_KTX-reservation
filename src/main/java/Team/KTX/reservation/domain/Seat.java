@@ -18,7 +18,8 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name="tid", nullable = false)
-    private Train train;
+    public Train train;
+
 
     @Column(name="SeatNumber", nullable=false)
     private String SeatNumber;
