@@ -18,7 +18,7 @@ public class Reservation {
     @Column(name="rid", nullable = false)
     private Long rid;
 
-    /*
+
     @ManyToOne
     @JoinColumn(name="id", nullable = false)
     private User user;
@@ -29,7 +29,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name="tid", nullable = false)
-    private Train train; */
+    private Train train;
 
     @Column(name = "title")
     private String title;
