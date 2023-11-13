@@ -7,14 +7,17 @@ body {
     margin: 0;
 }
 
-#login-container,
-#signup-container {
+#login-container {
     border: 1px solid #ccc;
     padding: 20px;
     margin: 20px;
     border-radius: 8px;
 }
 
+
+#signup-container{
+   border:
+}
 button {
     background-color: #4CAF50;
     color: white;
