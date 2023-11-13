@@ -19,7 +19,6 @@ public class ReservationService {
         return reservationRepository.save(request.toEntity());
     }
     public List<Reservation> findAll(){
-
         List<Reservation> reservations = reservationRepository.findAll();
         return reservations;
     }
