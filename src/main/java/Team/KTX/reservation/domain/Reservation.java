@@ -20,30 +20,30 @@ public class Reservation {
 
 
     @ManyToOne
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="name")
     private User user;
 
     @OneToOne
-    @JoinColumn(name="SeatId", nullable = false)
+    @JoinColumn(name="SeatNumber")
     private Seat seat;
 
     @ManyToOne
-    @JoinColumn(name="tid", nullable = false)
+    @JoinColumn(name="tnumber")
     private Train train;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "payment")
+    private String payment;
 
-    @Column(name = "content")
-    private String content;
+    @Column(name = "rstatus")
+    private String rstatus;
 
     @Builder
     public Reservation(String PaymentStatus, String ReservationStatus){
-        this.title=PaymentStatus;
-        this.content=ReservationStatus;
+        this.payment = PaymentStatus;
+        this.rstatus = ReservationStatus;
     }
     public void update(String PaymentStatus, String ReservationStatus){
-        this.title=PaymentStatus;
-        this.content=ReservationStatus;
+        this.payment = PaymentStatus;
+        this.rstatus = ReservationStatus;
     }
 }

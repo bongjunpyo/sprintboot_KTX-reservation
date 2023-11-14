@@ -17,9 +17,8 @@ public class Seat {
     private Long SeatId;
 
     @ManyToOne
-    @JoinColumn(name = "tid", nullable = false)
+    @JoinColumn(name="tnumber", nullable = false)
     private Train train;
-
 
     @Column(name="SeatNumber", nullable=false)
     private String SeatNumber;

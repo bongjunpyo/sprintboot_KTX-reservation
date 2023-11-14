@@ -18,9 +18,11 @@ public class User {
     @Column(name="id", nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name="SeatId", nullable = false)
-    private Seat seat;
+    @Column(name="userId", nullable = false)
+    private String userId;
+
+    @Column(name="password", nullable = false)
+    private String password;
 
     @Column(name="name", nullable = false)
     private String name;
