@@ -7,7 +7,9 @@ import Team.KTX.reservation.service.ReservationService;
 import Team.KTX.reservation.service.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,13 +27,15 @@ public class KTXViewController {
 
     @GetMapping("/KTX_Main")
     public String showKTXMainPage() {
-       return "KTX_Main";
+
+        return "KTX_Main";
     }
 
     /*@GetMapping("/KTX_Login")*/
 
     @GetMapping("/KTX_SignUp")
     public String showSignUpPage() {
+
         return "KTX_SignUp"; // 회원가입 페이지의 이름 (예: sign_up.html)
     }
 
@@ -46,6 +50,19 @@ public class KTXViewController {
         userRepository.save(user);
 
         return "redirect:/KTX_Main"; // 회원가입 후 메인 페이지로 리다이렉트
+    }
+
+    @GetMapping("/KTX_Login")
+    public String showLoginPage(){
+
+        return "KTX_Login";
+    }
+
+    @GetMapping("/KTX/{userId}")
+    public String showLoginedPage(@PathVariable String userId) {
+        // 여기서 userId 변수를 활용하여 해당 사용자에 대한 처리를 수행할 수 있습니다.
+        // 예를 들어, 해당 ID에 해당하는 정보를 조회하거나 페이지를 렌더링할 수 있습니다.
+        return "KTX_LoggedInPage"; // 적절한 뷰 페이지 이름을 반환하도록 수정해주세요.
     }
 
 }
