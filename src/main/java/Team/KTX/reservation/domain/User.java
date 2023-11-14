@@ -18,25 +18,27 @@ public class User {
     @Column(name="id", nullable = false)
     private Long id;
 
-    @Column(name="userId", nullable = false)
+    @Column(name="userId")
     private String userId;
 
-    @Column(name="password", nullable = false)
+    @Column(name="password")
     private String password;
 
-    @Column(name="name", nullable = false)
+    @Column(name="name")
     private String name;
 
     @Column(name="email")
     private String email;
 
-    @Column(name="phoneNumber")
-    private String phoneNumber;
+    @Column(name="number")
+    private String number;
 
     @Builder
-    public User(String name, String email, String phoneNumber){
-        this.name= name;
+    public User(String userId, String password, String name, String email, String number){
+        this.userId=userId;
+        this.password=password;
+        this.name=name;
         this.email=email;
-        this.phoneNumber=phoneNumber;
+        this.number=number;
     }
 }

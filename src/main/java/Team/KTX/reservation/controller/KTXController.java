@@ -1,11 +1,15 @@
 package Team.KTX.reservation.controller;
 
 import Team.KTX.reservation.domain.Reservation;
+import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.dto.AddReservationRequest;
+import Team.KTX.reservation.dto.AddUserRequest;
 import Team.KTX.reservation.service.ReservationService;
+import Team.KTX.reservation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +19,12 @@ public class KTXController {
 
     @Autowired
     private ReservationService reservationService;
+    private final UserService userService;
+
+    @Autowired
+    public KTXController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/api/KTXReservation")
     public ResponseEntity<Reservation> addReservation(@RequestBody AddReservationRequest request){
@@ -36,6 +46,13 @@ public class KTXController {
         Reservation reservation = reservationService.findOne(rid);
         return ResponseEntity.ok().body(reservation);
 
+    }
+
+    @PostMapping("/api/PlusUser")
+    public ResponseEntity<User> addUser(@RequestBody AddUserRequest request){
+        User savedUser = userService.save(request);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(savedUser);
     }
 
 

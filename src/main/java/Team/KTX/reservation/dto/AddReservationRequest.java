@@ -18,4 +18,5 @@ public class AddReservationRequest {
         Reservation reservation = new Reservation(payment,rstatus);
         return reservation;
     }
+
 }
