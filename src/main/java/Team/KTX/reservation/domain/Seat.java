@@ -25,4 +25,29 @@ public class Seat {
 
     @Column(name="SeatStatus", nullable=false)
     private String SeatStatus;
+
+    public void setSeatNumber(String seatNumber) {
+        SeatNumber = seatNumber;
+    }
+
+    public String getSeatStatus() {
+        return SeatStatus;
+    }
+
+    public void setSeatStatus(String seatStatus) {
+        SeatStatus = seatStatus;
+    }
+
+    public String getSeatNumber() {
+        return SeatNumber;
+    }
+
+    public String getUserName(){
+        if(train != null){
+            return train.getTnumber();
+        }
+        else {
+            return null;
+        }
+    }
 }
