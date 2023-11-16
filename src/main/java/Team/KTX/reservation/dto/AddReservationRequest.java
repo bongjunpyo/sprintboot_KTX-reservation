@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 @Getter
 public class AddReservationRequest {
 
-    private String title;
-    private String content;
+    private String payment;
+    private String rstatus;
+
 
     public Reservation toEntity(){
-        Reservation reservation = new Reservation(title, content);
+        Reservation reservation = new Reservation(payment,rstatus);
         return reservation;
     }
+
 }

@@ -9,9 +9,9 @@
 <div class="container">
     <div class="row-6" th:each="item : ${reservation}">
         <div class="card">
-            <div class="card-header" th:text="${item.title}"></div>
+            <div class="card-header" th:text="${reservation.title}"></div>
             <div class="card-body">
-                <p class="card-text" th:text="${item.content}"></p>
+                <p class="card-text" th:text="${reservation.content}"></p>
                 <a th:href="@/api/KTXReservation/{rid}({id=$reservation.id})" class="btn btn-primary">예약</a>
             </div>
         </div>
