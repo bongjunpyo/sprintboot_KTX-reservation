@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -23,13 +25,10 @@ public class Reservation {
     @JoinColumn(name="name")
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="SeatNumber")
     private Seat seat;
 
-    @ManyToOne
-    @JoinColumn(name="tnumber")
-    private Train train;
 
     @Column(name = "payment")
     private String payment;
@@ -47,51 +46,21 @@ public class Reservation {
         this.rstatus = ReservationStatus;
     }
 
-    public Long getRid() {
-        return rid;
+    public String getSeatNumber() {
+        if (seat != null) {
+            return seat.getSeatNumber();
+        } else {
+            return null; // seat가 null인 경우 처리 로직 추가
+        }
     }
 
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public String getUserName(){
+        if(user != null){
+            return user.getUserName();
+        }
+        else {
+            return null;
+        }
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Seat getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Seat seat) {
-        this.seat = seat;
-    }
-
-    public Train getTrain() {
-        return train;
-    }
-
-    public void setTrain(Train train) {
-        this.train = train;
-    }
-
-    public String getPayment() {
-        return payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
-
-    public String getRstatus() {
-        return rstatus;
-    }
-
-    public void setRstatus(String rstatus) {
-        this.rstatus = rstatus;
-    }
 }

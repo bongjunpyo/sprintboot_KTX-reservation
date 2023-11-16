@@ -1,13 +1,11 @@
 package Team.KTX.reservation.controller;
 
-import Team.KTX.reservation.domain.Reservation;
 import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.dto.AddReservationRequest;
 import Team.KTX.reservation.dto.AddUserRequest;
 import Team.KTX.reservation.repository.UserRepository;
 import Team.KTX.reservation.service.ReservationService;
 import Team.KTX.reservation.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

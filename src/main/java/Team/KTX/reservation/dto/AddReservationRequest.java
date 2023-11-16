@@ -1,6 +1,5 @@
 package Team.KTX.reservation.dto;
 
-import Team.KTX.reservation.domain.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
