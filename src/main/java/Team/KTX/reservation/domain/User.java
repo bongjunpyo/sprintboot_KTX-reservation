@@ -7,51 +7,42 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-
 public class User {
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false)
-    private Long id;
+    private int id;
 
-    @Column(name="userId")
-    private String userId;
+    @Column(name="email", nullable = false, unique = true)
+    private String email;
 
     @Column(name="password")
     private String password;
 
-    @Column(name="name")
-    private String name;
 
-    @Column(name="email")
-    private String email;
-
-    @Column(name="number")
-    private String number;
-
-    @ManyToOne
-    @Column(name="rid")
-    private Reservation reservation;
-
-    @Builder
-    public User(String userId, String password, String name, String email, String number){
-        this.userId=userId;
-        this.password=password;
-        this.name=name;
-        this.email=email;
-        this.number=number;
+    public int getId() {
+        return id;
     }
 
-    public Long getUserName(){
-        if(reservation != null){
-            return reservation.getRid();
-        }
-        else {
-            return null;
-        }
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 }

@@ -4,7 +4,7 @@ import Team.KTX.reservation.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    public User findByUserId(String userId);
+    public User findByEmail(String email);
 
-    public User findByUserIdAndPasswordAndNameAndEmail(String userId,String password,String name,String email);
+    public User findByEmailAndPassword(String email, String password);
 }

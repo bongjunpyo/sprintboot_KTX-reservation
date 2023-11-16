@@ -1,7 +1,8 @@
 package Team.KTX.reservation.service;
 
 import Team.KTX.reservation.domain.User;
-import Team.KTX.reservation.dto.AddUserRequest;
+import Team.KTX.reservation.dto.UserRequest;
+import Team.KTX.reservation.dto.UserResponse;
 import Team.KTX.reservation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,40 @@ public class UserService {
     UserRepository userRepository;
 
 
-    public User save(AddUserRequest request,String userId){
-        User user = request.toEntity();
+    public UserResponse join(UserRequest request){
+        User checkUser=userRepository.findByEmail(request.getEmail());
 
-        return userRepository.save(request.toEntity());
+        UserResponse response=new UserResponse();
+
+        if(checkUser!=null){ //이미 가입된 이메일이 있는 경우
+            response.setSuccess(false); //성공 여부의 값을 false로 설정
+            response.setMessage("이미 가입된 이메일입니다.");
+            return response;
+        }
+        //가입된 이메일이 없는 경우
+        userRepository.save(request.toEntity()); //사용자가 입력한 데이터를 그대로 DB에 넣음.
+        response.setSuccess(true);
+        response.setMessage("회원가입이 완료되었습니다.");
+        return response;
     }
 
-    public User getUserByUserId(String userId) {
-        // 여기서는 예시로 UserRepository에서 userId를 이용하여 사용자 정보를 가져오는 코드를 사용합니다.
-        return userRepository.findByUserId(userId); // userRepository는 실제 UserRepository 인터페이스에 의존합니다.
+    public UserResponse login(UserRequest request){
+
+        UserResponse response=new UserResponse();
+        User checkUser=userRepository
+                .findByEmailAndPassword(request.getEmail(), request.getPassword());
+
+        if(checkUser==null){  //아이디 또는 패스워드가 틀렸을 경우
+            response.setSuccess(false);
+            response.setMessage("아이디 또는 패스워드가 틀렸습니다.");
+            return response;
+        }
+
+        //아이디 또는 패스워드가 맞았을 경우
+        response.setSuccess(true);
+        response.setMessage("로그인 성공");
+        response.setUser(checkUser);
+        return response;
     }
 
 }

@@ -18,12 +18,8 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="rid", nullable = false)
-    private Long rid;
+    private int rid;
 
-
-    @ManyToOne
-    @JoinColumn(name="name")
-    private User user;
 
     @ManyToOne
     @JoinColumn(name="SeatNumber")
@@ -36,6 +32,10 @@ public class Reservation {
     @Column(name = "rstatus")
     private String rstatus;
 
+    /*@ManyToOne
+    @JoinColumn(name="email", nullable = false, unique = true)
+    private User user;
+    */
     @Builder
     public Reservation(String PaymentStatus, String ReservationStatus){
         this.payment = PaymentStatus;
@@ -54,13 +54,5 @@ public class Reservation {
         }
     }
 
-    public Long getUserName(){
-        if(user != null){
-            return user.getUserName();
-        }
-        else {
-            return null;
-        }
-    }
 
 }

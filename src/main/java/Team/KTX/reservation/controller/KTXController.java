@@ -1,9 +1,7 @@
 package Team.KTX.reservation.controller;
 
 import Team.KTX.reservation.domain.Reservation;
-import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.dto.AddReservationRequest;
-import Team.KTX.reservation.dto.AddUserRequest;
 import Team.KTX.reservation.repository.UserRepository;
 import Team.KTX.reservation.service.ReservationService;
 import Team.KTX.reservation.service.UserService;
@@ -13,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class KTXController {
