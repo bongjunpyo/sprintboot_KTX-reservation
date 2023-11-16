@@ -49,7 +49,6 @@ public class Train {
         this.destination=destination;
         this.departureTime=departureTime;
         this.arrivalTime=arrivalTime;
-
         this.seats = seats;
     }
 }

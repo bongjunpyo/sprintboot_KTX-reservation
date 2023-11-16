@@ -29,15 +29,6 @@ public class KTXViewController {
 
     @Autowired
     ReservationService reservationService;
-    @GetMapping("/KTXReservation")
-    public ModelAndView getReservations(){
-        ModelAndView mav = new ModelAndView();
-        List<Reservation> reservations = reservationService.findAll();
-        mav.addObject("reservations",reservations);
-        mav.setViewName("reservation");
-        return mav;
-    }
-
 
     TrainRepository trainRepository;
     TrainService trainService;
