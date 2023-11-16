@@ -33,6 +33,18 @@ public class KTXViewController {
         return "KTX_Main";
     }
 
+    @GetMapping("/KTX_Login")
+    public String showLoginPage(){
+
+        return "KTX_Login";
+    }
+
+    @GetMapping("/KTX_SignUp")
+    public String showSignUpPage(){
+
+        return "KTX_SignUp";
+    }
+
 
 
 }
