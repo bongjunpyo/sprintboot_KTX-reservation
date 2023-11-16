@@ -54,7 +54,7 @@ public class Reservation {
         }
     }
 
-    public String getUserName(){
+    public Long getUserName(){
         if(user != null){
             return user.getUserName();
         }
