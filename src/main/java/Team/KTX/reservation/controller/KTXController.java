@@ -53,7 +53,7 @@ public class KTXController {
         return ResponseEntity.ok().body(reservation);
 
     }
-    
+
 }
 
 
