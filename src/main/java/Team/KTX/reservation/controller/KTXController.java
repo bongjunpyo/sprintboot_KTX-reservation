@@ -22,7 +22,8 @@ public class KTXController {
 
     @Autowired
     private ReservationService reservationService;
-    private final UserService userService;
+    @Autowired
+    private  UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -72,7 +73,8 @@ public class KTXController {
 
         if (existingUser != null && existingUser.getUserId().equals(userId) && existingUser.getPassword().equals(password)) {
             return ResponseEntity.ok("로그인 성공");
-        } else {
+        }
+        else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
         }
     }
