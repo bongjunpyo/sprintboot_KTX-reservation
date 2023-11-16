@@ -20,6 +20,9 @@ public class Seat {
     @JoinColumn(name="tnumber", nullable = false)
     private Train train;
 
+    @Column(name="CarNumber", nullable=false) // 열차의 칸 정보 컬럼
+    private String carNumber;
+
     @Column(name="SeatNumber", nullable=false)
     private String SeatNumber;
 
