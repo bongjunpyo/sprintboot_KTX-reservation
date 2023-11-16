@@ -6,18 +6,16 @@ import Team.KTX.reservation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class UserService {
 
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
 
-    public User save(AddUserRequest request){
+    public User save(AddUserRequest request,String userId){
+        User user = request.toEntity();
 
         return userRepository.save(request.toEntity());
     }

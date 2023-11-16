@@ -46,4 +46,52 @@ public class Reservation {
         this.payment = PaymentStatus;
         this.rstatus = ReservationStatus;
     }
+
+    public Long getRid() {
+        return rid;
+    }
+
+    public void setRid(Long rid) {
+        this.rid = rid;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public Train getTrain() {
+        return train;
+    }
+
+    public void setTrain(Train train) {
+        this.train = train;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getRstatus() {
+        return rstatus;
+    }
+
+    public void setRstatus(String rstatus) {
+        this.rstatus = rstatus;
+    }
 }
