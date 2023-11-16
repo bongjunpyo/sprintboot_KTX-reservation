@@ -1,5 +1,6 @@
 package Team.KTX.reservation.service;
 
+import Team.KTX.reservation.domain.Reservation;
 import Team.KTX.reservation.dto.AddReservationRequest;
 import Team.KTX.reservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
