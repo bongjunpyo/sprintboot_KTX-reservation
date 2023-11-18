@@ -1,9 +1,12 @@
 package Team.KTX.reservation.service;
 
 import Team.KTX.reservation.domain.Article;
+import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.dto.AddArticleRequest;
 import Team.KTX.reservation.dto.UpdateArticleRequest;
+import Team.KTX.reservation.dto.UserResponse;
 import Team.KTX.reservation.repository.ArticleRepository;
+import Team.KTX.reservation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +19,16 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-    public Article save(AddArticleRequest request){
+    @Autowired
+    private UserRepository userRepository;
 
-        return articleRepository.save(request.toEntity());
+    public Article save(AddArticleRequest request, String userId){
+
+
+        Article article=request.toEntity();
+        User user=userRepository.findByEmail(userId);
+        article.setWriter(user);
+        return articleRepository.save(article);
     }
 
     public List<Article> findAll(){

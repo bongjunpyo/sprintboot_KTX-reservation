@@ -4,6 +4,8 @@ import Team.KTX.reservation.domain.Article;
 import Team.KTX.reservation.dto.AddArticleRequest;
 import Team.KTX.reservation.dto.UpdateArticleRequest;
 import Team.KTX.reservation.service.ArticleService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,15 @@ public class ArticleController {
     private ArticleService articleService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
-        Article savedarticle = articleService.save(request);
+    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request,
+                                              HttpServletRequest httpServletRequest){
+
+        HttpSession session = httpServletRequest.getSession(true);
+        String userId=(String) session.getAttribute("userId");
+        if(userId==null){
+            return ResponseEntity.badRequest().body(null);
+        }
+        Article savedarticle = articleService.save(request,userId);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedarticle);
     }
