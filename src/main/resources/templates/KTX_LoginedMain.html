@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:text="${userEmail}+'님 환영합니다!'"></div>
+<button onclick="goToKTXList()">KTX 조회</button>
+<button onclick="goToCenter()">고객센터</button>
+<button onclick="goToReservation()">예약현황</button>
+
+<script>
+    function goToKTXList() {
+        window.location.href = '/KTX_LoginedMain/KTXList';
+    }
+
+    function goToCenter() {
+        window.location.href = '/KTX_LoginedMain/Center';
+    }
+
+    function goToReservation() {
+        // 예약현황 페이지의 URL을 여기에 추가하세요
+        window.location.href = '/reservation_status_page';
+    }
+</script>
+</body>
+</html>

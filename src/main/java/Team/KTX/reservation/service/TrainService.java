@@ -4,25 +4,22 @@ package Team.KTX.reservation.service;
 import Team.KTX.reservation.domain.Seat;
 import Team.KTX.reservation.domain.Train;
 import Team.KTX.reservation.repository.TrainRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TrainService implements ApplicationRunner {
 
-    private final TrainRepository trainRepository;
-    private List<Seat> seats;
-
     @Autowired
-    public TrainService(TrainRepository trainRepository) {
-
-        this.trainRepository = trainRepository;
-    }
+    private TrainRepository trainRepository;
+    private List<Seat> seats; // 이 부분에서 seats 초기화가 필요
 
 
     @Override
@@ -44,4 +41,10 @@ public class TrainService implements ApplicationRunner {
             trainRepository.save(train2);
         }
     }
+
+    public List<Train> findAll(){
+        List<Train> trains=trainRepository.findAll();
+        return trains;
+    }
+
 }
