@@ -2,24 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>KTX 예약 시스템</title>
+    <style>
+        *{
+      margin:0; padding: 0;
+      font-family: "Times New Roman", serif;
+     }
+     .navbar {
+            z-index: 1000;
+        }
+        .navbar-nav{
+              display: flex;
+              justify-content: flex-end;
+
+        }
+        .wapper{
+        text-decoration-line: none;
+        display: block;
+        padding: 30px;
+        margin: 80px;
+        text-align: center;
+        font-size: 30px;
+        color: black;
+    }
+    .link{
+        text-decoration-line: none;
+        display: block;
+        border: 10px solid dark;
+        font-size: 30px;
+        color: black;
+        background-color: dark;
+        text-align: center;
+         margin-top: 10px;
+            z-index: 1;
+
+    }
+
+
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
 </head>
 <body>
-<header>
-    <!-- 로그인 버튼 -->
-    <a href="/KTX_Login" class="btn btn-primary"  style="background-color: #333;">로그인</a>
 
-    <!-- 회원가입 버튼 -->
-    <a href="/KTX_SignUp" class="btn btn-primary" style="background-color: #333;">회원가입</a>
-</header>
+<div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="KTX_Main">RESERVAION</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+            <span class="collapse navbar-collapse" id="navbar-content"></span>
+        </button>
+        <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav navbar-nav ms-auto">
+            </ul>
+            <ul class="navbar-nav ">
+                <li class="nav-item"><a class="nav-link " href="KTX_Login">로그인</a></li>
+                <li class="nav-item"><a class="nav-link " href="KTX_SignUp">회원가입</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<main>
-    <!-- 예약 폼 또는 예약 관련 컨텐츠 -->
-    <button href="/Reservation" class="btn btn-primary"  style="background-color: #333;">예약</button>
-    <!-- 여기에 예약 시스템과 관련된 내용을 추가하세요 -->
-</main>
-
+    <main class="wapper">
+        <div>
+            <a class="link" href="KTX_List"  style="display: inline-block; vertical-align: middle; margin-top: 100;">예약</a>
+        </div>
+    </main>
 <footer>
     <!-- 페이지 하단 내용 -->
 </footer>
