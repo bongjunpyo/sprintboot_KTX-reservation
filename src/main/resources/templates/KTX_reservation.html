@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTX Reservation</title>
+</head>
+<body>
+
+<h1>KTX Reservation</h1>
+
+<ul>
+    <li><strong>Reservation ID:</strong> <span id="rid"></span></li>
+    <li><strong>Seat:</strong> <span id="seat"></span></li>
+    <li><strong>Payment:</strong> <span id="payment"></span></li>
+    <li><strong>Status:</strong> <span id="rstatus"></span></li>
+    <li><strong>Writer:</strong> <span id="writer"></span></li>
+    <li><strong>Created At:</strong> <span id="createdAt"></span></li>
+    <li><strong>Updated At:</strong> <span id="updatedAt"></span></li>
+</ul>
+
+<script>
+    document.getElementById('rid').innerText = '123';
+    document.getElementById('seat').innerText = 'A1';
+    document.getElementById('payment').innerText = 'Credit Card';
+    document.getElementById('rstatus').innerText = 'Confirmed';
+    document.getElementById('writer').innerText = 'John Doe';
+    document.getElementById('createdAt').innerText = '2023-11-19 12:34:56';  // 예시 데이터
+    document.getElementById('updatedAt').innerText = '2023-11-19 13:45:23';
+</script>
+
+</body>
+</html>
