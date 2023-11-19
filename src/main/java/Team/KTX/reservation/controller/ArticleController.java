@@ -17,19 +17,19 @@ import java.util.List;
 public class ArticleController {
 
     @Autowired
-    private ArticleService articleService;
+        private ArticleService articleService;
 
-    @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request,
-                                              HttpServletRequest httpServletRequest){
+        @PostMapping("/api/articles")
+        public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request,
+                HttpServletRequest httpServletRequest){
 
-        HttpSession session = httpServletRequest.getSession(true);
-        String userId=(String) session.getAttribute("userId");
-        if(userId==null){
-            return ResponseEntity.badRequest().body(null);
-        }
-        Article savedarticle = articleService.save(request,userId);
-        return ResponseEntity.status(HttpStatus.CREATED)
+            HttpSession session = httpServletRequest.getSession(true);
+            String userId=(String) session.getAttribute("userId");
+            if(userId==null){
+                return ResponseEntity.badRequest().body(null);
+            }
+            Article savedarticle = articleService.save(request,userId);
+            return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedarticle);
     }
 
