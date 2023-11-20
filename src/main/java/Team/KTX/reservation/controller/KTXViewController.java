@@ -51,7 +51,7 @@ public class KTXViewController {
     }
 
 
-    @GetMapping("/KTX_LIST")
+    @GetMapping("/KTX_List")
     public String createReservation(){
         return "KTX_reservation";
     }

@@ -26,6 +26,15 @@ public class ArticleViewController {
 
         return mav;
     }
+    @GetMapping("/KTX_article")
+    public ModelAndView plusArticle(){
+        ModelAndView mav = new ModelAndView();
+        List<Article> articles = articleService.findAll();
+        mav.addObject("articles", articles);
+        mav.setViewName("ArticleNoLogin");
+
+        return mav;
+    }
 
     @GetMapping("/KTX_LoginedMain/Center/{id}")
     public ModelAndView getArticle(@PathVariable long id){
@@ -37,7 +46,7 @@ public class ArticleViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_new-article")
+    @GetMapping("/KTX_LoginedMain/KTX_new-article")
     public String createArticle(){
 
         return "newArticle";
