@@ -1,5 +1,6 @@
 package Team.KTX.reservation.controller;
 
+import Team.KTX.reservation.domain.Train;
 import Team.KTX.reservation.repository.TrainRepository;
 import Team.KTX.reservation.repository.UserRepository;
 import Team.KTX.reservation.service.ReservationService;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 
 @Controller
@@ -51,9 +55,14 @@ public class KTXViewController {
     }
 
 
-    @GetMapping("/KTX_LIST")
-    public String createReservation(){
-        return "KTX_reservation";
+    @GetMapping("/KTX_LoginedMain/KTXList")
+    public ModelAndView getTrains() {
+
+        ModelAndView mav = new ModelAndView();
+        List<Train> trains = trainService.findAll();
+        mav.addObject("trains", trains);
+        mav.setViewName("KTX_List");
+        return mav;
     }
 
 }
