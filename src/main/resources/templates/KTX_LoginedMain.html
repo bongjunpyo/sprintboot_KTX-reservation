@@ -42,18 +42,27 @@ font-family: "Times New Roman", serif;
 </div>
 
 <script>
-    function goToKTXList() {
-        window.location.href = '/KTX_LoginedMain/KTXList';
-    }
 
-    function goToCenter() {
-        window.location.href = '/KTX_LoginedMain/Center';
-    }
+    function submitForm() {
+             var selectedStart = document.getElementById("start").value;
+             if (selectedStart) {
+                 alert("선택한 출발지: " + selectedStart);
+             } else {
+                 alert("출발지를 선택하세요.");
+             }
+         }
+ function goToKTXList() {
+     window.location.href = '/KTX_LoginedMain/KTXList';
+ }
 
-    function goToReservation() {
-        // 예약현황 페이지의 URL을 여기에 추가하세요
-        window.location.href = '/reservation_status_page';
-    }
+ function goToCenter() {
+     window.location.href = '/KTX_LoginedMain/Center';
+ }
+
+ function goToReservation() {
+     // 예약현황 페이지의 URL을 여기에 추가하세요
+     window.location.href = '/reservation_status_page';
+ }
 </script>
 </body>
 </html>
