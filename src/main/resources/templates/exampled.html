@@ -16,25 +16,25 @@
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-        <option value="5">4</option>
+        <option value="5">5</option>
     </select><br>
 
     <label for="departure">출발지:</label>
     <select id="departure" name="departure">
-        <option value="6">서울</option>
-        <option value="7">인천</option>
-        <option value="8">춘천</option>
-        <option value="9">속초</option>
-        <option value="10">부산</option>
+        <option value="서울">서울</option>
+        <option value="인천">인천</option>
+        <option value="춘천">춘천</option>
+        <option value="속초">속초</option>
+        <option value="부산">부산</option>
     </select><br>
 
     <label for="destination">목적지:</label>
     <select id="destination" name="destination">
-        <option value="11">서울</option>
-        <option value="12">인천</option>
-        <option value="8">춘천</option>
-        <option value="9">속초</option>
-        <option value="10">부산</option>
+        <option value="서울">서울</option>
+        <option value="인천">인천</option>
+        <option value="춘천">춘천</option>
+        <option value="속초">속초</option>
+        <option value="부산">부산</option>
     </select><br>
 
     <label for="departureTime">출발 시간:</label>
@@ -43,12 +43,34 @@
     <label for="arrivalTime">도착 시간:</label>
     <input type="time" id="arrivalTime" name="arrivalTime" required><br>
 
-    <input type="button" value="예약" onclick="addRow()">
+    <input type="button" value="예약" onclick="addRowAndNavigate()">
 </form>
 
-<table id="trainTable" border="1">
-    <tr>
-        <th>열차 번호</th>
-        <th>출발지</th>
-        <th>목적지</th>
 
+<script>
+    function addRowAndNavigate() {
+        var trainNumber = document.getElementById("trainNumber").value;
+        var departure = document.getElementById("departure").value;
+        var destination = document.getElementById("destination").value;
+        var departureTime = document.getElementById("departureTime").value;
+        var arrivalTime = document.getElementById("arrivalTime").value;
+
+        // Create an object to hold reservation information
+        var reservationInfo = {
+            trainNumber: trainNumber,
+            departure: departure,
+            destination: destination,
+            departureTime: departureTime,
+            arrivalTime: arrivalTime
+        };
+
+        // Store the reservation information in localStorage
+        localStorage.setItem('reservationInfo', JSON.stringify(reservationInfo));
+
+        // Redirect to examplee.html
+        window.location.href = "examplee.html";
+    }
+</script>
+
+</body>
+</html>
