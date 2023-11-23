@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Information</title>
+</head>
+<body>
+
+<h1>Train Information</h1>
+
+<form id="trainForm">
+    <label for="trainNumber">열차 번호:</label>
+    <select id="trainNumber" name="trainNumber">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">4</option>
+    </select><br>
+
+    <label for="departure">출발지:</label>
+    <select id="departure" name="departure">
+        <option value="6">서울</option>
+        <option value="7">인천</option>
+        <option value="8">춘천</option>
+        <option value="9">속초</option>
+        <option value="10">부산</option>
+    </select><br>
+
+    <label for="destination">목적지:</label>
+    <select id="destination" name="destination">
+        <option value="11">서울</option>
+        <option value="12">인천</option>
+        <option value="8">춘천</option>
+        <option value="9">속초</option>
+        <option value="10">부산</option>
+    </select><br>
+
+    <label for="departureTime">출발 시간:</label>
+    <input type="time" id="departureTime" name="departureTime" required><br>
+
+    <label for="arrivalTime">도착 시간:</label>
+    <input type="time" id="arrivalTime" name="arrivalTime" required><br>
+
+    <input type="button" value="예약" onclick="addRow()">
+</form>
+
+<table id="trainTable" border="1">
+    <tr>
+        <th>열차 번호</th>
+        <th>출발지</th>
+        <th>목적지</th>
+
