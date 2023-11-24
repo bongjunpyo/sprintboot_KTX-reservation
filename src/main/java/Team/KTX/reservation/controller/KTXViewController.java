@@ -50,6 +50,6 @@ public class KTXViewController {
         return "KTX_List";
     }
 
-
+   
 
 }

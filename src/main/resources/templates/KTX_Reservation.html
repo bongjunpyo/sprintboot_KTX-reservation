@@ -31,19 +31,23 @@
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
-<div class="container">
-    <a class="navbar-brand" href="KTX_Reservation">RESERVAION</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
-        <span class="collapse navbar-collapse" id="navbar-content"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav navbar-nav ms-auto"></ul>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link " href="KTX_Login">로그인</a></li>
-            <li class="nav-item"><a class="nav-link " href="KTX_article">고객센터</a></li>
-        </ul>
+    <div class="container">
+        <a class="navbar-brand" href="KTX_Reservation">RESERVAION</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+            <span class="collapse navbar-collapse" id="navbar-content"></span>
+        </button>
+        <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav navbar-nav ms-auto">
+            </ul>
+            <ul class="navbar-nav ">
+                <<div th:text="${userEmail}+'님 환영합니다!'"></div>
+                <button onclick="goToKTXList()">KTX 조회</button>
+                <button onclick="goToCenter()">고객센터</button>
+                <button onclick="goToReservation()">예약현황</button>
+
+            </ul>
+        </div>
     </div>
-</div>
 </div>
 
 
@@ -76,12 +80,14 @@
         <option value="부산">부산</option>
     </select><br>
 
-    <label for="departureTime">출발 시간:</label>
-    <input type="time" id="departureTime" name="departureTime" required><br>
-
-    <label for="arrivalTime">도착 시간:</label>
-    <input type="time" id="arrivalTime" name="arrivalTime" required><br>
-
+    <label for="tion">출발시간~도착시간:</label>
+    <select id="tion" name="destination">
+        <option value="10:00~11:00">10:00~11:00</option>
+        <option value="11:00~12:00">11:00~12:00</option>
+        <option value="12:00~13:00">12:00~13:00</option>
+        <option value="13:00~14:00">13:00~14:00</option>
+        <option value="14:00~15:00">14:00~15:00</option>
+    </select><br>
     <input type="button" value="예약" onclick="addRowAndNavigate()">
 </form>
 </div>
@@ -92,16 +98,14 @@
         var trainNumber = document.getElementById("trainNumber").value;
         var departure = document.getElementById("departure").value;
         var destination = document.getElementById("destination").value;
-        var departureTime = document.getElementById("departureTime").value;
-        var arrivalTime = document.getElementById("arrivalTime").value;
+        var tion = document.getElementById("tion").value;
 
         // Create an object to hold reservation information
         var reservationInfo = {
             trainNumber: trainNumber,
             departure: departure,
             destination: destination,
-            departureTime: departureTime,
-            arrivalTime: arrivalTime
+            tion: tion
         };
 
         // Store the reservation information in localStorage
@@ -110,6 +114,26 @@
         // Redirect to examplee.html
         window.location.href = "KTX_List";
     }
+     function submitForm() {
+             var selectedStart = document.getElementById("start").value;
+             if (selectedStart) {
+                 alert("선택한 출발지: " + selectedStart);
+             } else {
+                 alert("출발지를 선택하세요.");
+             }
+         }
+          function goToKTXList() {
+     window.location.href = '/KTX_Reservation/KTXList';
+ }
+
+ function goToCenter() {
+     window.location.href = '/KTX_Reservation/Center';
+ }
+
+ function goToReservation() {
+     // 예약현황 페이지의 URL을 여기에 추가하세요
+     window.location.href = '/reservation_status_page';
+ }
 </script>
 
 </body>
