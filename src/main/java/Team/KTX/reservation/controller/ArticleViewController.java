@@ -4,7 +4,6 @@ import Team.KTX.reservation.domain.Article;
 import Team.KTX.reservation.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +15,7 @@ public class ArticleViewController {
 
     @Autowired
     ArticleService articleService;
-    @GetMapping("/KTX_LoginedMain/Center")
+    @GetMapping("/KTX_Reservation/Center")
     public ModelAndView getArticle(){
 
         ModelAndView mav = new ModelAndView();
@@ -36,7 +35,7 @@ public class ArticleViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_LoginedMain/Center/{id}")
+    @GetMapping("/KTX_Reservation/Center/{id}")
     public ModelAndView getArticle(@PathVariable long id){
 
         ModelAndView mav = new ModelAndView();
@@ -46,13 +45,13 @@ public class ArticleViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_LoginedMain/KTX_new-article")
+    @GetMapping("/KTX_Reservation/KTX_new-article")
     public String createArticle(){
 
         return "newArticle";
     }
 
-    @GetMapping("/KTX_LoginedMain/modify/{id}")
+    @GetMapping("/KTX_Reservation/modify/{id}")
     public ModelAndView modifyArticle(@PathVariable long id){
         ModelAndView mav = new ModelAndView();
         Article article = articleService.findOne(id);

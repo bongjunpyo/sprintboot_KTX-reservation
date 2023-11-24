@@ -16,9 +16,6 @@ public class Seat {
     @Column(name="SeatId")
     private Long SeatId;
 
-    @ManyToOne
-    @JoinColumn(name="tnumber", nullable = false)
-    private Train train;
 
     @Column(name="CarNumber", nullable=false) // 열차의 칸 정보 컬럼
     private String carNumber;
@@ -45,12 +42,4 @@ public class Seat {
         return SeatNumber;
     }
 
-    public String getUserName(){
-        if(train != null){
-            return train.getTnumber();
-        }
-        else {
-            return null;
-        }
-    }
 }
