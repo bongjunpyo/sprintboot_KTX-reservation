@@ -88,7 +88,7 @@ public class Reservation {
     }
 
     public void setWriter(User writer) {
-        writer = writer;
+        this.writer = writer;
     }
 
     public String getDepartureLocation() {

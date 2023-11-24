@@ -28,7 +28,7 @@ public class ReservationController {
 
     @PostMapping("/api/reservations")
     public ResponseEntity<Reservation> addReservation(@RequestBody AddReservationRequest request
-            , AddSeatRequest seatRequest, HttpServletRequest httpServletRequest){
+            ,HttpServletRequest httpServletRequest){
 
         HttpSession session = httpServletRequest.getSession(true);
         String userId= (String)session.getAttribute("userId");
