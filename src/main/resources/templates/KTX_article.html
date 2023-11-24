@@ -19,9 +19,9 @@
         </section>
     </article>
     <input type="hidden" id="id" th:value="${article.id}">
-    <a class="btn btn-primary" th:href="@{/KTX_LoginedMain/modify/{id}(id=${article.id} ) }">수정</a>
+    <a class="btn btn-primary" th:href="@{/KTX_Reservation/modify/{id}(id=${article.id} ) }">수정</a>
     <a class="btn btn-danger" onClick="deleteAction()">삭제</a> <!--버튼이 눌렸을 때 delete()함수 실행 -->
-    <a class="btn btn-primary" th:href="@{/KTX_LoginedMain/Center}">목록으로 가기</a>
+    <a class="btn btn-primary" th:href="@{/KTX_Reservation/Center}">목록으로 가기</a>
     <script>
 
         function deleteAction(){
@@ -33,7 +33,7 @@
                 method:"DELETE",
             })
             .then(()=> {
-                location.replace("/KTX_LoginedMain/Center")
+                location.replace("/KTX_Reservation/Center")
 
             })
         }

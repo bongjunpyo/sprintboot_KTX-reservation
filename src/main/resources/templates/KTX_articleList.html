@@ -48,7 +48,7 @@
     </div>
 </div>
 <div class="wapper">
-    <button onclick="/KTX_LoginedMain/KTX_new-article" class="btn btn-primary">글 작성하기</button>
+    <button onclick="/KTX_Reservation/KTX_new-article" class="btn btn-primary">글 작성하기</button>
 
     <div class="container">
         <div class="row-6" th:each="item : ${articles}">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text" th:text="${item.content}"></p>
-                    <a th:href="@{/KTX_LoginedMain/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+                    <a th:href="@{/KTX_Reservation/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
                 </div>
             </div>
         </div>
