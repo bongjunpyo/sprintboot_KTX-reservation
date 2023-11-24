@@ -82,11 +82,11 @@
 
     <label for="tion">출발시간~도착시간:</label>
     <select id="tion" name="destination">
-        <option value="10:00~11:00">10:00~11:00</option>
-        <option value="11:00~12:00">11:00~12:00</option>
-        <option value="12:00~13:00">12:00~13:00</option>
-        <option value="13:00~14:00">13:00~14:00</option>
-        <option value="14:00~15:00">14:00~15:00</option>
+        <option value="10:00,11:00">10:00~11:00</option>
+        <option value="11:00,12:00">11:00~12:00</option>
+        <option value="12:00,13:00">12:00~13:00</option>
+        <option value="13:00,14:00">13:00~14:00</option>
+        <option value="14:00,15:00">14:00~15:00</option>
     </select><br>
     <input type="button" value="예약" onclick="addRowAndNavigate()">
 </form>
@@ -95,45 +95,39 @@
 
 <script>
     function addRowAndNavigate() {
-        var trainNumber = document.getElementById("trainNumber").value;
-        var departure = document.getElementById("departure").value;
-        var destination = document.getElementById("destination").value;
-        var tion = document.getElementById("tion").value;
+    var trainNumber = document.getElementById("trainNumber").value;
+    var departure = document.getElementById("departure").value;
+    var destination = document.getElementById("destination").value;
+    var tion = document.getElementById("tion").value;
 
-        // Create an object to hold reservation information
-        var reservationInfo = {
-            trainNumber: trainNumber,
-            departure: departure,
-            destination: destination,
-            tion: tion
-        };
+    var [startTime, endTime] = tion.split(',');
 
-        // Store the reservation information in localStorage
-        localStorage.setItem('reservationInfo', JSON.stringify(reservationInfo));
+    var reservationData = {
+        tnumber: trainNumber,
+        departureLocation: departure,
+        destinationLocation: destination,
+        departureTime: startTime,
+        arrivalTime: endTime
+    };
 
-        // Redirect to examplee.html
-        window.location.href = "KTX_List";
-    }
-     function submitForm() {
-             var selectedStart = document.getElementById("start").value;
-             if (selectedStart) {
-                 alert("선택한 출발지: " + selectedStart);
-             } else {
-                 alert("출발지를 선택하세요.");
-             }
-         }
-          function goToKTXList() {
-     window.location.href = '/KTX_Reservation/KTXList';
- }
+    fetch('/api/reservations', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reservationData)
+    })
+    .then(() => {
+        alert('예약 완료');
+        location.replace('/KTX_List');
+    })
+    .catch(error => {
+        console.error('예약 중 오류가 발생했습니다:', error);
+        // 오류 처리 추가
+    });
+}
 
- function goToCenter() {
-     window.location.href = '/KTX_Reservation/Center';
- }
 
- function goToReservation() {
-     // 예약현황 페이지의 URL을 여기에 추가하세요
-     window.location.href = '/reservation_status_page';
- }
 </script>
 
 </body>

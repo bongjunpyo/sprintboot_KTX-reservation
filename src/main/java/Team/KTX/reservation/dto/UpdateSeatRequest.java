@@ -1,6 +1,5 @@
 package Team.KTX.reservation.dto;
 
-import Team.KTX.reservation.domain.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class AddReservationRequest {
+public class UpdateSeatRequest {
 
     private String tnumber;
     private String snumber;
@@ -18,10 +17,4 @@ public class AddReservationRequest {
     private String departureLocation;
     private String arrivalTime;
     private String departureTime;
-
-    public Reservation toEntity() {
-        Reservation reservation = new Reservation(tnumber,snumber,cnumber,departureLocation, destinationLocation, departureTime, arrivalTime);
-
-        return reservation;
-    }
 }
