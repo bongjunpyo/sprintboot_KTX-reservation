@@ -27,10 +27,13 @@
             font-size: 20px;
             color: black;
         }
+        .button {
+        background-color:#3498db;
+        }
     </style>
 </head>
 <body>
-<div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+<div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
         <a class="navbar-brand" href="KTX_Reservation">RESERVAION</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
@@ -39,13 +42,12 @@
         <div class="collapse navbar-collapse" >
             <ul class="navbar-nav navbar-nav ms-auto">
             </ul>
-            <ul class="navbar-nav ">
-                <<div th:text="${userEmail}+'님 환영합니다!'"></div>
-                <button onclick="goToKTXList()">KTX 조회</button>
-                <button onclick="goToCenter()">고객센터</button>
-                <button onclick="goToReservation()">예약현황</button>
-
+            <ul class="navbar-nav">
+                <div th:text="${userEmail}+'님 환영합니다!'"></div>
+                <li class="nav-item"><a class="nav-link " href="KTX_List">예약현황</a></li>
+                <li class="nav-item"><a class="nav-link " href="KTX_article">고객센터</a></li>
             </ul>
+
         </div>
     </div>
 </div>
