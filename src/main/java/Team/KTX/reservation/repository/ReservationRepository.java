@@ -3,17 +3,12 @@ package Team.KTX.reservation.repository;// ReservationRepository.java
 import Team.KTX.reservation.domain.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 
-    public Reservation findByTrainNumber(int trainNumber);
-
-
-    public Reservation findByDepartureLocationAndDestinationLocation(String departureLocation, String destinationLocation);
-
-
-    public Reservation findByDepartureTimeAndArrivalTime(String departureTime, String arrivalTime);
-
+    public List<Reservation> findByWriterId(int writerId);
 
 
 }
