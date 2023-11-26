@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Table(name = "reservations")
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
