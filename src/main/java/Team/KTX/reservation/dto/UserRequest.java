@@ -17,7 +17,7 @@ public class UserRequest {
         user.setEmail(email);
         user.setPassword(password);
         user.setName(name);
-        user.setAge(String.valueOf(age));
+        user.setAge(age);
         user.setPhone(phone);
         return user;
     }

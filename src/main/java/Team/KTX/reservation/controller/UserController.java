@@ -10,7 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class UserController {
 
@@ -41,4 +42,17 @@ public class UserController {
 
 
     }
+
+    @GetMapping("/api/login")  // 수정 필요한 부분: 매핑되는 엔드포인트
+    public String name(Model model) {
+        // 여기서 userName 값을 설정합니다. 이 값은 서비스 계층에서 가져와야 합니다.
+        // 예를 들어, 세션에서 가져오거나, 사용자 정보를 저장한 데이터베이스 등에서 가져올 수 있습니다.
+        String userName = "name";  // 실제 값으로 대체
+
+        System.out.println("userName: " + userName);
+        model.addAttribute("userName", userName);
+
+        return "KTX_Reservation";  // 수정 필요한 부분: Thymeleaf 템플릿 이름
+    }
+
 }
