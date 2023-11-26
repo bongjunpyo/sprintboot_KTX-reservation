@@ -1,10 +1,6 @@
 package Team.KTX.reservation.domain;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 public class User {
@@ -19,6 +15,14 @@ public class User {
 
     @Column(name="password")
     private String password;
+    @Column(name="name")
+    private String name;
+
+    @Column(name="age")
+    private int age;
+
+    @Column(name="phone")
+    private int phone;
 
 
     public int getId() {
@@ -42,6 +46,29 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = Integer.parseInt(age);
+    }
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = Integer.parseInt(String.valueOf(phone));
     }
 
 
