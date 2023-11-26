@@ -15,6 +15,10 @@
             z-index: 1000;
         }
 
+        .image-container {
+            text-align: center;
+        }
+
         .navbar-nav {
             display: flex;
             justify-content: flex-end;
@@ -33,8 +37,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="image-container">
 <img src="https://cdn.redaily.co.kr/news/photo/202009/img_761_0.jpg" alt="KTX Train">
-
+</div>
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
         <a class="navbar-brand" href="KTX_Main">RESERVAION</a>
@@ -51,60 +56,69 @@
     </div>
 </div>
 
+
 <div class="wapper">
-            <div class="row align-items-center">
-                <label for="start" class="col-sm-6" style="font-size:20px;">출발지:</label>
-                <div class="col-sm-6">
-                    <select class="form-select" id="start" name="start">
-                        <option value="" disabled selected>출발지를 선택하세요</option>
-                        <option value="서울">서울</option>
-                        <option value="부산">부산</option>
-                        <option value="대구">대구</option>
-                        <option value="광주">광주</option>
-                        <option value="순천">순천</option>
-                        <option value="용산">용산</option>
-                        <option value="광명">광명</option>
-                        <option value="강릉">강릉</option>
-                        <option value="평택">평택</option>
-                        <option value="천안">천안</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <label for="start" class="col-sm-6" style="font-size:20px;">도착지:</label>
-                <div class="col-sm-6">
-                    <select class="form-select" id="finish" name="start">
-                        <option value="" disabled selected>도착지를 선택하세요</option>
-                        <option value="서울">서울</option>
-                        <option value="부산">부산</option>
-                        <option value="대구">대구</option>
-                        <option value="광주">광주</option>
-                        <option value="순천">순천</option>
-                        <option value="용산">용산</option>
-                        <option value="광명">광명</option>
-                        <option value="강릉">강릉</option>
-                        <option value="평택">평택</option>
-                        <option value="천안">천안</option>
-                    </select>
-                </div>
-            </div>
-    <from>
-        <label for="name">출발지:</label>
-        <input id="name">
-        <select class="form-select" id="finis" name="start">
-            <option value="" disabled selected>도착지를 선택하세요</option>
+    <h1>KTX 예약 시스템</h1>
+    <form id="trainForm">
+        <label for="trainNumber">열차 번호:</label>
+        <select id="trainNumber" name="trainNumber">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+
+        <label for="CarNumber">호차 번호:</label>
+        <select id="CarNumber" name="CarNumber">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+
+        <label for="SeatNumber">좌석 번호:</label>
+        <select id="SeatNumber" name="SeatNumber">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select><br>
+
+        <label for="departure">출발지:</label>
+        <select id="departure" name="departure">
             <option value="서울">서울</option>
+            <option value="인천">인천</option>
+            <option value="춘천">춘천</option>
+            <option value="속초">속초</option>
             <option value="부산">부산</option>
-            <option value="대구">대구</option>
-            <option value="광주">광주</option>
-            <option value="순천">순천</option>
-            <option value="용산">용산</option>
-            <option value="광명">광명</option>
-            <option value="강릉">강릉</option>
-            <option value="평택">평택</option>
-            <option value="천안">천안</option>
-        </select>
-    </from>
+        </select><br>
+
+        <label for="destination">목적지:</label>
+        <select id="destination" name="destination">
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+            <option value="춘천">춘천</option>
+            <option value="속초">속초</option>
+            <option value="부산">부산</option>
+        </select><br>
+
+        <label for="tion">출발시간~도착시간:</label>
+        <select id="tion" name="destination">
+            <option value="10:00,11:00">10:00~11:00</option>
+            <option value="11:00,12:00">11:00~12:00</option>
+            <option value="12:00,13:00">12:00~13:00</option>
+            <option value="13:00,14:00">13:00~14:00</option>
+            <option value="14:00,15:00">14:00~15:00</option>
+        </select><br>
+    </form>
             <button type="button" class="btn btn-primary" onclick="checkLogin()">예매하기</button>
 
     </div>
