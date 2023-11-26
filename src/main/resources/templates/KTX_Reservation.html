@@ -62,6 +62,29 @@
         <option value="5">5</option>
     </select><br>
 
+    <label for="CarNumber">호차 번호:</label>
+    <select id="CarNumber" name="CarNumber">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+
+    <label for="SeatNumber">좌석 번호:</label>
+    <select id="SeatNumber" name="SeatNumber">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br>
+
     <label for="departure">출발지:</label>
     <select id="departure" name="departure">
         <option value="서울">서울</option>
@@ -96,14 +119,19 @@
 <script>
     function addRowAndNavigate() {
     var trainNumber = document.getElementById("trainNumber").value;
+    var CarNumber = document.getElementById("CarNumber").value;
+    var SeatNumber = document.getElementById("SeatNumber").value;
     var departure = document.getElementById("departure").value;
     var destination = document.getElementById("destination").value;
     var tion = document.getElementById("tion").value;
+
 
     var [startTime, endTime] = tion.split(',');
 
     var reservationData = {
         tnumber: trainNumber,
+        snumber : CarNumber,
+        cnumber : SeatNumber,
         departureLocation: departure,
         destinationLocation: destination,
         departureTime: startTime,
@@ -125,7 +153,12 @@
         console.error('예약 중 오류가 발생했습니다:', error);
         // 오류 처리 추가
     });
-}
+
+
+    }
+    function goToReservation(){
+        window.location.href = '/KTX_List';
+    }
 
 
 </script>

@@ -13,6 +13,8 @@
 <table id="reservationTable" border="1">
     <tr>
         <th>열차 번호</th>
+        <th>호차 번호</th>
+        <th>좌석 번호</th>
         <th>출발지</th>
         <th>목적지</th>
         <th>출발시간</th>
@@ -20,6 +22,8 @@
     </tr>
     <tr th:each="reservation : ${reservations}">
         <td th:text="${reservation.tnumber}"></td>
+        <td th:text="${reservation.cnumber}"></td>
+        <td th:text="${reservation.snumber}"></td>
         <td th:text="${reservation.departureLocation}"></td>
         <td th:text="${reservation.destinationLocation}"></td>
         <td th:text="${reservation.departureTime}"></td>
