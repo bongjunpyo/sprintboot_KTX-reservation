@@ -35,19 +35,23 @@
 <body>
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
-        <a class="navbar-brand" href="KTX_Reservation">RESERVAION</a>
+        <a class="navbar-brand" href="KTX_Reservation">RESERVATION</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
-            <span class="collapse navbar-collapse" id="navbar-content"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav navbar-nav ms-auto">
             </ul>
             <ul class="navbar-nav">
-                <div th:text="${userName}+'님 환영합니다!'"></div>
+                <!-- Thymeleaf로 사용자 이름 표시 -->
+                <li class="nav-item">
+                    <div th:each="user : ${userName}">
+                        <span th:text="${user + '님 환영합니다!'}"></span>
+                    </div>
+                </li>
                 <li class="nav-item"><a class="nav-link " href="KTX_List">예약현황</a></li>
                 <li class="nav-item"><a class="nav-link " href="KTX_article">고객센터</a></li>
             </ul>
-
         </div>
     </div>
 </div>

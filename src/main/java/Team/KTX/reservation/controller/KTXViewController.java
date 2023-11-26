@@ -1,7 +1,9 @@
 package Team.KTX.reservation.controller;
 
+import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.repository.UserRepository;
 import Team.KTX.reservation.service.ReservationService;
+import Team.KTX.reservation.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class KTXViewController {
 
     @Autowired
     ReservationService reservationService;
+
+    @Autowired
+    UserService userService;
 
 
     UserRepository userRepository;
@@ -46,7 +51,10 @@ public class KTXViewController {
     @GetMapping("/KTX_Reservation")
     public String showReservation(Model model, HttpSession session){
         String userEmail=(String) session.getAttribute("userId");
-        model.addAttribute("userEmail",userEmail);
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "KTX_Reservation";
     }
 
