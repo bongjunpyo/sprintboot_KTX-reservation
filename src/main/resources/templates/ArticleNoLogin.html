@@ -62,7 +62,7 @@
 
 
 <div class="wapper">
-    <a href="KTX_Reservation/KTX_new-article" onclick="checkLogin()" class="btn btn-primary">글 작성하기</a>
+    <a onclick="checkLogin()" class="btn btn-primary">글 작성하기</a>
     <div class="row-6" th:each="item : ${articles}">
         <div class="card">
             <div class="card-header" th:text="${item.title}">
@@ -86,7 +86,7 @@
         if (!isLoggedIn) {
             // 로그인이 안 되어 있으면 경고창을 띄우고 로그인 페이지로 이동
             alert("로그인 후 이용해 주세요.");
-            window.location.href = "KTX_Login";  // 로그인 페이지로 이동하는 URL로 변경
+            window.location.href = "/KTX_Login";  // 로그인 페이지로 이동하는 URL로 변경
         } else {
             // 로그인이 되어 있으면 예약 로직을 실행 (여기에 예약 로직 추가)
             alert("예약 로직을 실행합니다.");

@@ -6,9 +6,7 @@ import Team.KTX.reservation.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,16 +42,5 @@ public class UserController {
 
     }
 
-    @GetMapping("/api/session")
-    public ResponseEntity<String> checkSession(HttpSession httpSession) {
-        String userId = (String) httpSession.getAttribute("userId");
 
-        if (userId != null) {
-            // 세션이 있는 경우
-            return ResponseEntity.ok().body("세션 확인: 세션이 있습니다");
-        } else {
-            // 세션이 없는 경우
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("세션 확인: 세션이 없습니다");
-        }
-    }
 }
