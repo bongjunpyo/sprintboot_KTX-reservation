@@ -13,7 +13,11 @@
         }
 
         body {
-            background-color: #ecf0f1; /* 페이지 전체 배경색 */
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
         .navbar {
@@ -35,11 +39,11 @@
             background-color: white; /* 폼의 배경색 */
             border-radius: 10px; /* 폼의 모서리를 둥글게 만듦 */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-            width: 300px; /* 폼의 너비 지정 */
+            width: 400px; /* 폼의 너비 지정 */
         }
 
         label {
-            margin-bottom: 10px;
+            margin-bottom: 7px;
             font-size: 18px;
             color: #3498db; /* 라벨의 색상 */
             text-align: left; /* 텍스트 왼쪽 정렬 추가 */
@@ -58,10 +62,12 @@
         button {
             background-color: #3498db;
             color: white;
-            padding: 10px;
+            padding: 14px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 0px;
+            width: 100%;
         }
 
         button:hover {
