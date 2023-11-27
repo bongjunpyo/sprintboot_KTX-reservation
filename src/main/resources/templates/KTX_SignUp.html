@@ -6,28 +6,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>User Registration</title>
     <style>
-        *{
-margin:0; padding: 0;
-font-family: "Times New Roman", serif;
-}
-.navbar {
-      z-index: 1000;
-  }
-  .navbar-nav{
-        display: flex;
-        justify-content: flex-end;
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", serif;
+        }
 
-  }
+        body {
+            background-color: #ecf0f1; /* 페이지 전체 배경색 */
+        }
 
-        .wapper{
-        text-decoration-line: none;
-        display: block;
-        padding: 30px;
-        margin: 80px;
-        text-align: center;
-        font-size: 30px;
-        color: black;
-    }
+        .navbar {
+            z-index: 1000;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .wapper {
+            text-decoration-line: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            margin: 80px auto;
+            background-color: white; /* 폼의 배경색 */
+            border-radius: 10px; /* 폼의 모서리를 둥글게 만듦 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            width: 300px; /* 폼의 너비 지정 */
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #3498db; /* 라벨의 색상 */
+            text-align: left; /* 텍스트 왼쪽 정렬 추가 */
+            width: 100%; /* 라벨 전체 너비 사용 */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #3498db; /* 입력 필드의 테두리 색상 */
+            border-radius: 5px; /* 입력 필드의 모서리를 둥글게 만듦 */
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* 버튼에 호버 효과 적용 */
+        }
     </style>
 </head>
 <body>
@@ -63,7 +102,7 @@ font-family: "Times New Roman", serif;
 
 
 
-    <button type="button" onclick="submitForm()">Sign Up</button>
+    <button type="button" onclick="submitForm()">가입하기</button>
 
 </div>
 
