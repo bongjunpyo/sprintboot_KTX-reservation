@@ -50,7 +50,7 @@
             <ul class="navbar-nav navbar-nav ms-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link " href="KTX_Login">로그인</a></li>
-                <li class="nav-item"><a class="nav-link " href="KTX_article">고객센터</a></li>
+                <li class="nav-item"><a class="nav-link " onclick="checkLogin()">고객센터</a></li>
             </ul>
         </div>
     </div>
@@ -125,14 +125,24 @@
 
 <script>
     function checkLogin() {
-        var isLoggedIn = false;
+        fetch('/api/session-status')
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'loggedIn') {
+                // 세션이 유효하고 로그인된 상태
+                console.log('사용자는 로그인되어 있습니다.');
+                window.location.href = '/KTX_List';
 
-        if (!isLoggedIn) {
-            alert("로그인 후 이용해 주세요.");
-            window.location.href = "/KTX_Login";
-        } else {
-            alert("예약 로직을 실행합니다.");
-        }
+            } else {
+                // 세션이 없거나 로그인되지 않은 상태
+                console.log('사용자는 로그인되어 있지 않습니다.');
+                alert('로그인 후 이용해주세요.');
+                window.location.href = '/KTX_Login';
+            }
+        })
+        .catch(error => {
+            console.error('세션 상태를 확인하는 중 오류가 발생했습니다:', error);
+        });
     }
 </script>
 
