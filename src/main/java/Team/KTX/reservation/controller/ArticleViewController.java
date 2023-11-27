@@ -78,5 +78,19 @@ public class ArticleViewController {
         return mav;
     }
 
+    @GetMapping("/KTX_Articles")
+    public String articleList(Model model, HttpSession session){
+
+        String userEmail=(String) session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
+        List<Article> articles = articleService.findAll();
+        model.addAttribute("articles", articles);
+        return "ArticleLogined";
+    }
+
 
 }

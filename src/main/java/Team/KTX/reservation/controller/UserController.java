@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,16 @@ public class UserController {
 
 
     }
+    @GetMapping("/api/session-status")
+    public String getSessionStatus(HttpServletRequest request) {
+        HttpSession session = request.getSession(false); // 세션이 없으면 새로 생성하지 않고 null 반환
 
-
+        if (session != null && session.getAttribute("userId") != null) {
+            // 세션이 있고, userId가 세션에 저장되어 있는 경우 - 로그인 상태
+            return "loggedIn";
+        } else {
+            // 세션이 없거나 userId가 저장되어 있지 않은 경우 - 로그인되지 않은 상태
+            return "notLoggedIn";
+        }
+    }
 }
