@@ -59,11 +59,15 @@ public class KTXViewController {
     }
 
     @GetMapping("/KTX_List")
-    public ModelAndView showList(HttpServletRequest httpServletRequest){
+    public ModelAndView showList(Model model, HttpServletRequest httpServletRequest){
         HttpSession session = httpServletRequest.getSession(true);
-        String userId = (String)session.getAttribute("userId");
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         ModelAndView mav = new ModelAndView();
-        List<Reservation> reservations = reservationService.findByUserId(userId);
+        List<Reservation> reservations = reservationService.findByUserId(userEmail);
         mav.addObject("reservations", reservations);
         mav.setViewName("KTX_List");
         return mav;

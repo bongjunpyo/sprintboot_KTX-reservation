@@ -63,8 +63,16 @@ public class ArticleViewController {
     }
 
     @GetMapping("/KTX_Reservation/KTX_new-article")
-    public String createArticle(){
+    public String createArticle(Model model, HttpSession session){
 
+        String userEmail=(String) session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
+        List<Article> articles = articleService.findAll();
+        model.addAttribute("articles", articles);
         return "newArticle";
     }
 
