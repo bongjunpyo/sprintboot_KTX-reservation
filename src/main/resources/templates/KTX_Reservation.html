@@ -35,25 +35,33 @@
 <body>
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
-        <a class="navbar-brand" href="KTX_Reservation">RESERVAION</a>
+        <a class="navbar-brand" href="KTX_Reservation">Go Together</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
-            <span class="collapse navbar-collapse" id="navbar-content"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" >
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav navbar-nav ms-auto">
             </ul>
             <ul class="navbar-nav">
-                <div th:text="${userName}+'님 환영합니다!'"></div>
+                <!-- Thymeleaf로 사용자 이름 표시 -->
+                <li class="nav-item">
+                    <div th:each="user : ${userName}">
+                        <span th:text="${user + '님 환영합니다!'}"></span>
+                    </div>
+                </li>
                 <li class="nav-item"><a class="nav-link " href="KTX_List">예약현황</a></li>
-                <li class="nav-item"><a class="nav-link " href="KTX_article">고객센터</a></li>
+                <li class="nav-item"><a class="nav-link " href="/KTX_Articles">고객센터</a></li>
             </ul>
-
         </div>
     </div>
 </div>
 
 
 <div class="wapper">
+    <h1>KTX 예약 시스템</h1>
+    <h2>환영합니다!</h2>
+    <img src="https://cdn.redaily.co.kr/news/photo/202009/img_761_0.jpg" alt="KTX Train">
+    <img src="https://img.freepik.com/premium-vector/happy-family-illustration_1124-508.jpg" alt="KTX_Family">
 <form id="trainForm">
     <label for="trainNumber">열차 번호:</label>
     <select id="trainNumber" name="trainNumber">

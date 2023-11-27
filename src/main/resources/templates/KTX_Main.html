@@ -16,7 +16,7 @@
         }
 
         .image-container {
-            text-align: center;
+            text-align: right;
         }
 
         .navbar-nav {
@@ -24,7 +24,7 @@
             justify-content: flex-end;
         }
 
-        .wapper {
+        .wrapper {
             text-decoration-line: none;
             padding:20px;
             margin: 80px;
@@ -32,17 +32,20 @@
             color: black;
         }
 
+        .form-container {
+            text-align: center;
+        }
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="image-container">
-<img src="https://cdn.redaily.co.kr/news/photo/202009/img_761_0.jpg" alt="KTX Train">
-</div>
+
+
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
-        <a class="navbar-brand" href="KTX_Main">RESERVAION</a>
+        <a class="navbar-brand" href="KTX_Main">Go Together</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
             <span class="collapse navbar-collapse" id="navbar-content"></span>
         </button>
@@ -57,8 +60,12 @@
 </div>
 
 
-<div class="wapper">
-    <h1>KTX 예약 시스템</h1>
+<div class="wrapper">
+    <div class="form-container">
+        <h1>KTX 예약 시스템</h1>
+        <h2>환영합니다!</h2>
+        <img src="https://cdn.redaily.co.kr/news/photo/202009/img_761_0.jpg" alt="KTX Train">
+        <img src="https://img.freepik.com/premium-vector/happy-family-illustration_1124-508.jpg" alt="KTX_Family">
     <form id="trainForm">
         <label for="trainNumber">열차 번호:</label>
         <select id="trainNumber" name="trainNumber">
@@ -110,7 +117,7 @@
             <option value="부산">부산</option>
         </select><br>
 
-        <label for="tion">출발시간~도착시간:</label>
+        <label for="tion">출발시간 ~ 도착시간:</label>
         <select id="tion" name="destination">
             <option value="10:00,11:00">10:00~11:00</option>
             <option value="11:00,12:00">11:00~12:00</option>
@@ -118,21 +125,32 @@
             <option value="13:00,14:00">13:00~14:00</option>
             <option value="14:00,15:00">14:00~15:00</option>
         </select><br>
+        <button type="button" class="btn btn-primary" onclick="checkLogin()">예매하기</button>
     </form>
-            <button type="button" class="btn btn-primary" onclick="checkLogin()">예매하기</button>
 
     </div>
+</div>
 
 <script>
     function checkLogin() {
-        var isLoggedIn = false;
+        fetch('/api/session-status')
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'loggedIn') {
+                // 세션이 유효하고 로그인된 상태
+                console.log('사용자는 로그인되어 있습니다.');
+                window.location.href = '/KTX_List';
 
-        if (!isLoggedIn) {
-            alert("로그인 후 이용해 주세요.");
-            window.location.href = "KTX_Login";
-        } else {
-            alert("예약 로직을 실행합니다.");
-        }
+            } else {
+                // 세션이 없거나 로그인되지 않은 상태
+                console.log('사용자는 로그인되어 있지 않습니다.');
+                alert('로그인 후 이용해주세요.');
+                window.location.href = '/KTX_Login';
+            }
+        })
+        .catch(error => {
+            console.error('세션 상태를 확인하는 중 오류가 발생했습니다:', error);
+        });
     }
 </script>
 
