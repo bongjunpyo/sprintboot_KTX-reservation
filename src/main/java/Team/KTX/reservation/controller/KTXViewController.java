@@ -31,9 +31,18 @@ public class KTXViewController {
     private Object Reservation;
 
     @GetMapping("/KTX_Main")
-    public String showKTXMainPage() {
-
-        return "KTX_Main";
+    public ModelAndView showKTXMainPage(Model model, HttpServletRequest httpServletRequest, HttpSession session) {
+        session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+        ModelAndView mav=new ModelAndView();
+        boolean isLoggedIn=session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn", isLoggedIn);
+        mav.setViewName("KTX_Main");
+        return mav;
     }
 
     @GetMapping("/KTX_Login")
@@ -71,6 +80,49 @@ public class KTXViewController {
         mav.addObject("reservations", reservations);
         mav.setViewName("KTX_List");
         return mav;
+    }
+
+    @GetMapping("/KTX_UserInfo")
+    public ModelAndView showUserInfo(Model model, HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("UserEmail", user.getEmail());
+            model.addAttribute("password", user.getPassword());
+            model.addAttribute("age", user.getAge());
+            model.addAttribute("phone", user.getPhone());
+
+        }
+        ModelAndView mav = new ModelAndView();
+        boolean isLoggedIn=session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn", isLoggedIn);
+        mav.setViewName("UserInfo");
+        return mav;
+
+    }
+
+    @GetMapping("/KTX_ModifyInfo")
+    public ModelAndView modifyUserInfo(Model model, HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("UserEmail", user.getEmail());
+            model.addAttribute("password", user.getPassword());
+            model.addAttribute("age", user.getAge());
+            model.addAttribute("phone", user.getPhone());
+        }
+
+        boolean isLoggedIn = session.getAttribute("userId") != null;
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("isLoggedIn", isLoggedIn);
+        mav.setViewName("ModifyUserInfo"); // 수정된 화면 이름으로 변경
+        return mav;
+
     }
 
 

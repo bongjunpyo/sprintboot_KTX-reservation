@@ -2,33 +2,24 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${article.title}"></title>
+    <title>User Information</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
     <style>
-        /* Styles for Navbar */
-         .navbar {
-            background-color: #2980b9;
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", serif;
         }
-
-        .navbar-brand {
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
+        .wrapper {
+            text-decoration-line: none;
+            padding: 20px;
+            margin: 80px auto; /* 위에 80px, 아래 auto(수직 가운데 정렬) */
+            text-align: center;
+            font-size: 20px;
+            color: black;
+            margin-top: 100px; /* header와의 간격 */
         }
-
-        /* Styles for Wrapper */
-    .wrapper {
-        margin-top: 100px; /* Adjust as needed */
-        margin-bottom: 100px; /* Adjust as needed */
-        max-width: 800px; /* Added to limit content width */
-        text-align: left; /* Set content alignment to left */
-        font-size: 20px;
-        color: black;
-        padding: 0 20px; /* Added some padding for better readability */
-        margin-left: 20px; /* Shift the wrapper content to the left */
-    }
     </style>
 </head>
 <body>
@@ -42,7 +33,7 @@
             <div class="collapse navbar-collapse" th:unless="${isLoggedIn}">
                 <ul class="navbar-nav navbar-nav ms-auto"></ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link " href="/KTX_Login">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link " href="KTX_Login">로그인</a></li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" th:if="${isLoggedIn}">
@@ -55,7 +46,6 @@
                     </li>
                     <li class="nav-item"><a class="nav-link " href="KTX_Login">내정보</a></li>
                     <li class="nav-item"><a class="nav-link " onclick="logout()">로그아웃</a></li>
-
                     <script>
 
                         function logout(){
@@ -72,42 +62,23 @@
                         }
 
                     </script>
+
                 </ul>
             </div>
         </div>
     </div>
 </header>
-
 <div class="wrapper">
-    <article>
-        <header>
-            <h2 th:text="'작성자 : '+${article.getWriter().getEmail()}"></h2>
-            <h2 th:text="'제목 : '+${article.title}"></h2>
-            <div th:text="'작성일 : '+${article.formattedCreateDate}"></div>
-        </header>
-        <section>
-            <p th:text="${article.content}"></p>
-        </section>
-    </article>
-    <input type="hidden" id="id" th:value="${article.id}">
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/modify/{id}(id=${article.id} ) }">수정</a>
-    <a class="btn btn-danger" onClick="deleteAction()">삭제</a>
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/Center}">목록으로 가기</a>
+    <p th:text="'Name: ' + ${userName}"></p>
+    <p th:text="'Email: ' + ${UserEmail}"></p>
+    <p th:text="'Password: ' + ${password}"></p>
+    <p th:text="'Age: ' + ${age}"></p>
+    <p th:text="'Phone: ' + ${phone}"></p>
+    <button class="btn btn-primary" onclick="editUserInfo()">수정</button>
     <script>
-        function deleteAction(){
-            var id = document.getElementById("id").value;
-            if (!confirm("정말 삭제하시겠습니까?")){
-                return;
-            }
-            fetch("/api/articles/" + id, {
-                method: "DELETE",
-            })
-            .then(() => {
-                location.replace("/KTX_Reservation/Center");
-            });
-        }
-
-
+        function editUserInfo() {
+    window.location.href = '/KTX_ModifyInfo';
+}
     </script>
 </div>
 </body>

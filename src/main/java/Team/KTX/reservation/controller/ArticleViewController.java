@@ -4,6 +4,7 @@ import Team.KTX.reservation.domain.Article;
 import Team.KTX.reservation.domain.User;
 import Team.KTX.reservation.service.ArticleService;
 import Team.KTX.reservation.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,18 @@ public class ArticleViewController {
     @Autowired
     UserService userService;
     @GetMapping("/KTX_Reservation/Center")
-    public ModelAndView getArticle(){
-
+    public ModelAndView getArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session){
+        session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         ModelAndView mav = new ModelAndView();
         List<Article> articles = articleService.findAll();
+
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
         mav.addObject("articles", articles);
         mav.setViewName("KTX_articleList");
 
@@ -53,11 +62,18 @@ public class ArticleViewController {
     }
 
     @GetMapping("/KTX_Reservation/Center/{id}")
-    public ModelAndView getArticle(@PathVariable long id){
-
+    public ModelAndView getArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
+        session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         ModelAndView mav = new ModelAndView();
         Article article = articleService.findOne(id);
         mav.addObject("article", article);
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
         mav.setViewName("KTX_article");
         return mav;
     }
@@ -77,12 +93,19 @@ public class ArticleViewController {
     }
 
     @GetMapping("/KTX_Reservation/modify/{id}")
-    public ModelAndView modifyArticle(@PathVariable long id){
+    public ModelAndView modifyArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
+        session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         ModelAndView mav = new ModelAndView();
         Article article = articleService.findOne(id);
         mav.addObject("article", article);
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
         mav.setViewName("KTX_articleModify");
-
         return mav;
     }
 

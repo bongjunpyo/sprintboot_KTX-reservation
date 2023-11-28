@@ -1,11 +1,15 @@
 package Team.KTX.reservation.service;
 
 import Team.KTX.reservation.domain.User;
+import Team.KTX.reservation.dto.UpdateUserRequest;
 import Team.KTX.reservation.dto.UserRequest;
 import Team.KTX.reservation.dto.UserResponse;
 import Team.KTX.reservation.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -53,6 +57,24 @@ public class UserService {
 
     public User findByEmail(String email) {
             return userRepository.findByEmail(email);
+    }
+
+    @Transactional
+    public User updateUserInfo(HttpServletRequest httpServletRequest, UpdateUserRequest request) {
+        HttpSession session = httpServletRequest.getSession(true);
+        String userEmail = (String) session.getAttribute("userId");
+        User user = userRepository.findByEmail(userEmail);
+
+        if (user != null) {
+            user.setEmail(request.getEmail());
+            user.setPassword(request.getPassword());
+            user.setName(request.getName());
+            user.setAge(request.getAge());
+            user.setPhone(request.getPhone());
+            return userRepository.save(user);
+        } else {
+            return null;
+        }
     }
 
 }

@@ -72,4 +72,22 @@ public class User {
     }
 
 
+    public void update(String email, String password, int age, int phone, String name){
+        if (email != null) {
+            this.email = email;
+        }
+        if (password != null) {
+            this.password = password;
+        }
+        if (age > 0) {
+            this.age = age;
+        }
+        if (phone > 0) {
+            this.phone = phone;
+        }
+        if (name != null) {
+            this.name = name;
+        }
+    }
+
 }

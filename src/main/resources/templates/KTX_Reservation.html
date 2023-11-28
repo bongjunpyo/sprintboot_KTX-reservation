@@ -35,7 +35,7 @@
 <body>
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
-        <a class="navbar-brand" href="KTX_Reservation">Go Together</a>
+        <a class="navbar-brand" onclick="goMain()">Go Together</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -168,6 +168,10 @@
     }
     function goToReservation(){
         window.location.href = '/KTX_List';
+    }
+
+    function goMain(){
+        window.location.href = '/KTX_Main';
     }
 
 
