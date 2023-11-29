@@ -51,11 +51,11 @@ public class ReservationController {
         return ResponseEntity.ok().body(userReservations);
     }
 
-    @GetMapping("/api/reservations/{rid}")
-    public ResponseEntity<Reservation> findReservation(@PathVariable long rid){
-        Reservation reservation = reservationService.findOne(rid);
-        return ResponseEntity.ok().body(reservation);
-    }
+    //@GetMapping("/api/reservations/{rid}")
+    //public ResponseEntity<Reservation> findReservation(@PathVariable long rid){
+     //   Reservation reservation = reservationService.findOne(rid);
+       // return ResponseEntity.ok().body(reservation);
+    //}
 
     @DeleteMapping("/api/reservations/{id}")
     public ResponseEntity<String> deleteReservation(@PathVariable long id){
@@ -63,10 +63,10 @@ public class ReservationController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/api/reservations/{rid}")
-    public ResponseEntity<Reservation> updateReservation(@PathVariable long rid, @RequestBody UpdateReservationRequest updatereservation){
-        Reservation reservation = reservationService.update(rid, updatereservation);
-        return ResponseEntity.ok().body(reservation);
+    @PutMapping("/api/reservations/{id}")
+    public ResponseEntity<Reservation> updateReservation(@PathVariable long id, @RequestBody UpdateReservationRequest request){
 
+        Reservation reservation = reservationService.update(id,request);
+        return ResponseEntity.ok().body(reservation);
     }
 }
