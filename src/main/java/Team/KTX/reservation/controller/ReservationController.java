@@ -57,10 +57,9 @@ public class ReservationController {
         return ResponseEntity.ok().body(reservation);
     }
 
-    @DeleteMapping("/api/reservations/{rid}")
-    public ResponseEntity<Void> deleteReservation(@PathVariable long rid){
-
-        reservationService.delete(rid);
+    @DeleteMapping("/api/reservations/{id}")
+    public ResponseEntity<String> deleteReservation(@PathVariable long id){
+        reservationService.delete(id);
         return ResponseEntity.ok().build();
     }
 

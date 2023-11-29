@@ -68,8 +68,8 @@ public class KTXViewController {
     }
 
     @GetMapping("/KTX_List")
-    public ModelAndView showList(Model model, HttpServletRequest httpServletRequest){
-        HttpSession session = httpServletRequest.getSession(true);
+    public ModelAndView showList(Model model, HttpServletRequest httpServletRequest, HttpSession session){
+        session = httpServletRequest.getSession(true);
         String userEmail = (String)session.getAttribute("userId");
         User user = userService.findByEmail(userEmail);
         if (user != null) {
@@ -78,6 +78,8 @@ public class KTXViewController {
         ModelAndView mav = new ModelAndView();
         List<Reservation> reservations = reservationService.findByUserId(userEmail);
         mav.addObject("reservations", reservations);
+        boolean isLoggedIn=session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn", isLoggedIn);
         mav.setViewName("KTX_List");
         return mav;
     }
