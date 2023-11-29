@@ -70,14 +70,12 @@
 </header>
 
 <div class="wrapper">
-    <form id="userInfoForm">
         <input type="text" id="userEmail" placeholder="이메일" th:value="${UserEmail}">
         <input type="text" id="userName" placeholder="이름" th:value="${userName}">
         <input type="password" id="userPassword" placeholder="패스워드" th:value="${password}">
         <input type="text" id="userAge" placeholder="나이" th:value="${age}">
         <input type="text" id="userPhone" placeholder="전화번호" th:value="${phone}">
         <button class="btn btn-primary" id="updateUserInfo" onclick="updateUserInfo()">정보 수정</button>
-    </form>
 </div>
 
 <script>

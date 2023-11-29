@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import Team.KTX.reservation.domain.Reservation;
@@ -125,6 +126,24 @@ public class KTXViewController {
         mav.setViewName("ModifyUserInfo"); // 수정된 화면 이름으로 변경
         return mav;
 
+    }
+
+    @GetMapping("/KTX_Reservation/modifyR/{id}")
+    public ModelAndView modifyReservation(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
+        session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user = userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+        ModelAndView mav = new ModelAndView();
+        Reservation reservation = reservationService.findOne(id);
+        mav.addObject("reservation", reservation);
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
+        mav.setViewName("KTX_reservationModify");
+
+        return mav;
     }
 
 

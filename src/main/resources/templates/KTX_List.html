@@ -102,12 +102,12 @@
                         <div>
                             <!-- Edit and Delete buttons -->
                             <input type="hidden" id="id" th:value="${reservation.id}">
-                            <button type="button" class="btn btn-primary me-2">예약 수정</button>
+                            <a  class="btn btn-primary" th:href="@{/KTX_Reservation/modifyR/{id}(id=${reservation.id} ) }">예약 수정</a>
                             <button type="button" class="btn btn-danger" onclick="deleteReservation()">예약 취소</button>
                             <script>
                                 function deleteReservation(){
                                     var id= document.getElementById("id").value;
-                                    if(!confirm("정말 삭제하시겠습니까?")){
+                                    if(!confirm("정말 취소하시겠습니까?")){
                                      return
                                     }
                                     fetch("/api/reservations/"+id,{
