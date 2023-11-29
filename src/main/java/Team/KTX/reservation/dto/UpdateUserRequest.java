@@ -9,10 +9,14 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UpdateUserRequest {
 
-    public String name;
-    public int phone;
-    public String email;
-    public String password;
-    public int age;
+    private String name;
+
+    private int phone;
+
+    private String email;
+
+    private String password;
+
+    private int age;
 
 }
