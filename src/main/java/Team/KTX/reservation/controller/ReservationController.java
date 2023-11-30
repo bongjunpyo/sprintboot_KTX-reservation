@@ -4,6 +4,7 @@ import Team.KTX.reservation.domain.Reservation;
 import Team.KTX.reservation.domain.Seat;
 import Team.KTX.reservation.dto.AddReservationRequest;
 import Team.KTX.reservation.dto.AddSeatRequest;
+import Team.KTX.reservation.dto.ReservationResponse;
 import Team.KTX.reservation.dto.UpdateReservationRequest;
 import Team.KTX.reservation.service.ReservationService;
 import Team.KTX.reservation.service.SeatService;
@@ -26,19 +27,22 @@ public class ReservationController {
     @Autowired
     private SeatService seatService;
 
-    @PostMapping("/api/reservations")
-    public ResponseEntity<Reservation> addReservation(@RequestBody AddReservationRequest request
-            ,HttpServletRequest httpServletRequest){
 
+    @PostMapping("/api/reservations")
+    public ResponseEntity<ReservationResponse> addReservation(@RequestBody AddReservationRequest request, HttpServletRequest httpServletRequest) {
         HttpSession session = httpServletRequest.getSession(true);
-        String userId= (String)session.getAttribute("userId");
-        if(userId==null){
+        String userId = (String) session.getAttribute("userId");
+
+        if (userId == null) {
             return ResponseEntity.badRequest().body(null);
         }
 
-        Reservation savedReservation = reservationService.save(request,userId);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(savedReservation);
+        ReservationResponse response = reservationService.save(request, userId);
+        if (response.isSuccess()) {
+            return ResponseEntity.ok().body(response);
+        } else {
+            return ResponseEntity.ok().body(response);
+        }
     }
 
 
@@ -64,9 +68,14 @@ public class ReservationController {
     }
 
     @PutMapping("/api/reservations/{id}")
-    public ResponseEntity<Reservation> updateReservation(@PathVariable long id, @RequestBody UpdateReservationRequest request){
+    public ResponseEntity<ReservationResponse> updateReservation(@PathVariable long id, @RequestBody UpdateReservationRequest request){
 
-        Reservation reservation = reservationService.update(id,request);
-        return ResponseEntity.ok().body(reservation);
+
+        ReservationResponse response = reservationService.update(id,request);
+        if (response.isSuccess()) {
+            return ResponseEntity.ok().body(response);
+        } else {
+            return ResponseEntity.ok().body(response);
+        }
     }
 }

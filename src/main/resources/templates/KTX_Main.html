@@ -55,7 +55,7 @@
       padding: 1px 50px;
       text-decoration: none;
 
-       }
+     }
 
          nav a:hover {
             color: black;
@@ -279,7 +279,7 @@
             </select><br>
 
             <label for="tion">출발시간 ~ 도착시간:</label>
-            <select id="tion" name="destination">
+            <select id="tion" name="tion">
                 <option value="10:00,11:00">10:00~11:00</option>
                 <option value="11:00,12:00">11:00~12:00</option>
                 <option value="12:00,13:00">12:00~13:00</option>
@@ -294,87 +294,65 @@
 
 <script>
     function addRowAndNavigate() {
-    fetch('/api/session-status')
-    .then(response => response.text())
-    .then(data => {
-        if (data === 'loggedIn') {
-            console.log('사용자는 로그인되어 있습니다.');
+    // 사용자 입력 가져오기
+    var trainNumber = document.getElementById("trainNumber").value;
+    var CarNumber = document.getElementById("CarNumber").value;
+    var SeatNumber = document.getElementById("SeatNumber").value;
+    var departure = document.getElementById("departure").value;
+    var destination = document.getElementById("destination").value;
+    var tion = document.getElementById("tion").value;
 
-            var trainNumber = document.getElementById("trainNumber").value;
-            var CarNumber = document.getElementById("CarNumber").value;
-            var SeatNumber = document.getElementById("SeatNumber").value;
-            var departure = document.getElementById("departure").value;
-            var destination = document.getElementById("destination").value;
-            var tion = document.getElementById("tion").value;
-
-            var [startTime, endTime] = tion.split(',');
-
-            var reservationData = {
-                tnumber: trainNumber,
-                snumber: SeatNumber,
-                cnumber: CarNumber,
-                departureLocation: departure,
-                destinationLocation: destination,
-                departureTime: startTime,
-                arrivalTime: endTime
-            };
-
-            fetch('/api/reservations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(reservationData)
-            })
-            .then(() => {
-                alert('예약 완료');
-                location.replace('/KTX_List');
-            })
-            .catch(error => {
-                console.error('예약 중 오류가 발생했습니다:', error);
-                // 예약 오류 처리 추가
-            });
-             } else {
-            // 로그인되어 있지 않은 경우
-            console.log('사용자는 로그인되어 있지 않습니다.');
-            alert('로그인 후 이용해주세요.');
-            window.location.href = '/KTX_Login';
-        }
-    })
-    .catch(error => {
-        console.error('세션 상태를 확인하는 중 오류가 발생했습니다:', error);
-    });
-}
-
-      var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    // 필수 정보를 입력했는지 확인
+    if (!trainNumber || !CarNumber || !SeatNumber || !departure || !destination || !tion) {
+        alert("모든 필드를 입력하세요.");
+        return;
     }
-    slides[slideIndex-1].style.display = "block";
-  }
 
-  // 자동으로 슬라이드를 전환하는 함수
-  function autoSlide() {
-    plusSlides(1);
-  }
+    var [startTime, endTime] = tion.split(',');
 
-  // 3초마다 자동으로 슬라이드를 전환
-  setInterval(autoSlide, 3000);
+    var reservationData = {
+        tnumber: trainNumber,
+        snumber: SeatNumber,
+        cnumber: CarNumber,
+        departureLocation: departure,
+        destinationLocation: destination,
+        departureTime: startTime,
+        arrivalTime: endTime
+    };
+
+    // 서버에 예약 정보 전송
+    fetch('/api/session-status')
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'loggedIn') {
+                fetch('/api/reservations', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(reservationData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        location.replace('/KTX_List');
+                    } else {
+                        alert(data.message); // 여기서 수정
+                    }
+                })
+                .catch(error => {
+                    console.error('예약 중 오류가 발생했습니다:', error);
+                });
+            } else {
+                alert('로그인 후 이용해주세요.');
+                window.location.href = '/KTX_Login';
+            }
+        })
+        .catch(error => {
+            console.error('세션 상태를 확인하는 중 오류가 발생했습니다:', error);
+        });
+}
 </script>
 
 <footer>

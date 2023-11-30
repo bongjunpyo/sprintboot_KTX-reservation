@@ -10,7 +10,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     public List<Reservation> findByWriterId(int writerId);
 
-    //public Reservaiton findByTnumberandSnumberandCnumberandDepartureLocationandDestinationLocationandDepartureTimeandArrivalTime();
+    public Reservation findByTnumberAndSnumberAndCnumberAndDepartureLocationAndDestinationLocationAndDepartureTimeAndArrivalTime(String tnumber, String snumber, String cnumber, String departureLocation, String destinationLocation, String departureTime,String arrivalTime);
 
 
 }

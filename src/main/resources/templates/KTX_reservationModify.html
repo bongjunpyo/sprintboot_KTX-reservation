@@ -181,13 +181,17 @@
                                 },
                                 body: JSON.stringify(reservationData)
                             })
-                                .then(() => {
-                                    alert('예약 수정 완료');
+                            .then(response => response.json())
+                            .then(data => {
+                                 if (data.success) {
+                                     alert(data.message);
                                     location.replace('/KTX_List');
-                                })
-                                .catch(error => {
-                                    console.error('예약 중 오류가 발생했습니다:', error);
-                                    // 예약 오류 처리 추가
+                                 } else {
+                                     alert(data.message); // 여기서 수정
+                                }
+                             })
+                             .catch(error => {
+                                console.error('예약 중 오류가 발생했습니다:', error);
                                 });
                         } else {
                             // 로그인되어 있지 않은 경우
