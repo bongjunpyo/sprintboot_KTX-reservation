@@ -200,6 +200,16 @@
         </ul>
     </ul>
 </div>
+<script>
+    function addRowAndNavigate() {
+    fetch('/api/session-status')
+    .then(response => response.text())
+    .then(data => {
+        if (data === 'loggedIn') {
+            console.log('사용자는 로그인되어 있습니다.');
+
+</script>
+
 
 
 </body>

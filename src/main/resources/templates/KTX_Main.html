@@ -11,6 +11,7 @@
 
         .navbar {
             z-index: 1000;
+            margin-bottom: 40px;
         }
 
         .image-container {
@@ -21,10 +22,14 @@
             display: flex;
             justify-content: flex-end;
         }
+        .nav-item{
+        pagging:20px;
+        }
+
 
         .wrapper {
             text-decoration-line: none;
-            padding:20px;
+            padding:40px;
             margin:120px;
             text-align: center;
             color: black;
@@ -38,8 +43,8 @@
       background-color: #77B0C4;
       color:white;
       padding:20px;
-      position: fixed; /* Make the navigation bar fixed */
-      top: 56px; /* Height of the navbar, adjust if needed */
+      position: fixed;
+      top: 65px; /* Height of the navbar, adjust if needed */
       width: 100%;
       display: flex;
         justify-content: center;
@@ -128,6 +133,15 @@
        margin-left: 350px; /* 왼쪽 간격을 설정합니다. */
         margin-right: 350px; /* 오른쪽 간격을 설정합니다. */
      }
+        .btn {
+        background-color: #3498db;
+        border: 1px solid #3498db;
+        margin-top:20px;}
+
+        .train{
+        margin-bottom:15px;
+        }
+
 
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
@@ -152,9 +166,9 @@
                 </ul>
             </div>
             <div class="collapse navbar-collapse" th:if="${isLoggedIn}">
-                <ul class="navbar-nav navbar-nav ms-auto"></ul>
+                <ul class="navbar-nav navbar-nav"></ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a th:each="user : ${userName}" th:text="${user + '님 환영합니다!'}"></a></li>
+                    <li class="nav-item"><a th:each="user : ${userName}" th:text="${user + '님'}"></a></li>
                     <li class="nav-item"><a class="nav-link " href="/KTX_UserInfo">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link " onclick="logout()">로그아웃</a></li>
 
@@ -204,7 +218,7 @@
     }
     </script>
     <a href="/KTX_Reservation/information">이용안내</a>
-    <a href="KTX_Reservation/Center">고객센터</a>
+    <a  href="KTX_Reservation/Center">고객센터</a>
 </nav>
 
 
@@ -234,8 +248,8 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <form id="trainForm" >
-            <label for="trainNumber">열차 번호:</label>
-            <select id="trainNumber" name="trainNumber">
+            <label  class="trian" for="trainNumber">열차 번호:</label>
+            <select class="trian" id="trainNumber" name="trainNumber">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -243,8 +257,8 @@
                 <option value="5">5</option>
             </select><br>
 
-            <label for="CarNumber">호차 번호:</label>
-            <select id="CarNumber" name="CarNumber">
+            <label class="trian" for="CarNumber">호차 번호:</label>
+            <select class="trian" id="CarNumber" name="CarNumber">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -252,8 +266,8 @@
                 <option value="5">5</option>
             </select><br>
 
-            <label for="SeatNumber">좌석 번호:</label>
-            <select id="SeatNumber" name="SeatNumber">
+            <label class="trian" for="SeatNumber">좌석 번호:</label>
+            <select class="trian" id="SeatNumber" name="SeatNumber">
                 <option value="A1">A1</option>
                 <option value="A2">A2</option>
                 <option value="B1">B1</option>
@@ -266,8 +280,8 @@
                 <option value="E2">E2</option>
             </select><br>
 
-            <label for="departure">출발지:</label>
-            <select id="departure" name="departure">
+            <label class="trian" for="departure">출발지:</label>
+            <select class="trian" id="departure" name="departure">
                 <option value="서울">서울</option>
                 <option value="인천">인천</option>
                 <option value="춘천">춘천</option>
@@ -275,8 +289,8 @@
                 <option value="부산">부산</option>
             </select><br>
 
-            <label for="destination">목적지:</label>
-            <select id="destination" name="destination">
+            <label class="trian" for="destination">목적지:</label>
+            <select class="trian" id="destination" name="destination">
                 <option value="서울">서울</option>
                 <option value="인천">인천</option>
                 <option value="춘천">춘천</option>
@@ -284,8 +298,8 @@
                 <option value="부산">부산</option>
             </select><br>
 
-            <label for="tion">출발시간 ~ 도착시간:</label>
-            <select id="tion" name="destination">
+            <label class="trian" for="tion">출발시간 ~ 도착시간:</label>
+            <select class="trian" id="tion" name="destination">
                 <option value="10:00,11:00">10:00~11:00</option>
                 <option value="11:00,12:00">11:00~12:00</option>
                 <option value="12:00,13:00">12:00~13:00</option>
