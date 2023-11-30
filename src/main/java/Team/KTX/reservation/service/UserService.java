@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class UserService {
 
@@ -29,6 +32,13 @@ public class UserService {
             response.setMessage("이미 가입된 이메일입니다.");
             return response;
         }
+
+        if (!isValidPassword(request.getPassword())) {
+            response.setSuccess(false);
+            response.setMessage("비밀번호는 8자 이상이어야 하며, 특수 문자(#, %, !, $, @, *)를 포함해야 합니다.");
+            return response;
+        }
+
         //가입된 이메일이 없는 경우
         userRepository.save(request.toEntity()); //사용자가 입력한 데이터를 그대로 DB에 넣음.
         response.setSuccess(true);
@@ -58,6 +68,14 @@ public class UserService {
     public User findByEmail(String email) {
 
         return userRepository.findByEmail(email);
+    }
+
+    private boolean isValidPassword(String password) {
+        // 비밀번호는 8자 이상이어야 하며, 특수 문자(#, %, !, $, @, *)를 포함해야 함
+        String regex = "^(?=.*[#%!$@*])[\\s\\S]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 
     @Transactional
