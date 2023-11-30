@@ -72,7 +72,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/KTX_Reservation/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+                <a th:href="@{/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
             if (data === 'loggedIn') {
                 // 세션이 유효하고 로그인된 상태
                 console.log('사용자는 로그인되어 있습니다.');
-                window.location.href = '/KTX_Reservation/KTX_new-article';
+                window.location.href = '/KTX_new-article';
 
             } else {
                 // 세션이 없거나 로그인되지 않은 상태

@@ -92,9 +92,9 @@
         </section>
     </article>
     <input type="hidden" id="id" th:value="${article.id}">
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/modify/{id}(id=${article.id} ) }">수정</a>
+    <a class="btn btn-primary" th:href="@{/modify/{id}(id=${article.id} ) }">수정</a>
     <a class="btn btn-danger" onClick="deleteAction()">삭제</a>
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/Center}">목록으로 가기</a>
+    <a class="btn btn-primary" th:href="@{/Center}">목록으로 가기</a>
     <script>
         function deleteAction(){
             var id = document.getElementById("id").value;
@@ -105,7 +105,7 @@
                 method: "DELETE",
             })
             .then(() => {
-                location.replace("/KTX_Reservation/Center");
+                location.replace("/Center");
             });
         }
 

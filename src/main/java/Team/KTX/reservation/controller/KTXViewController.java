@@ -146,8 +146,8 @@ public class KTXViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_Reservation/information")
-    public String showinfo(){
+    @GetMapping("/information")
+    public String showInfo(){
 
         return "/KTX_Info";
     }
