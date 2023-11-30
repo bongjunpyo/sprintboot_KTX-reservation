@@ -23,7 +23,7 @@ public class ArticleViewController {
 
     @Autowired
     UserService userService;
-    @GetMapping("/KTX_Reservation/Center")
+    @GetMapping("/Center")
     public ModelAndView getArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session){
         session = httpServletRequest.getSession(true);
         String userEmail = (String)session.getAttribute("userId");
@@ -61,7 +61,7 @@ public class ArticleViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_Reservation/Center/{id}")
+    @GetMapping("/Center/{id}")
     public ModelAndView getArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
         session = httpServletRequest.getSession(true);
         String userEmail = (String)session.getAttribute("userId");
@@ -78,7 +78,7 @@ public class ArticleViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_Reservation/KTX_new-article")
+    @GetMapping("/KTX_new-article")
     public String createArticle(Model model, HttpSession session){
 
         String userEmail=(String) session.getAttribute("userId");
@@ -92,7 +92,7 @@ public class ArticleViewController {
         return "newArticle";
     }
 
-    @GetMapping("/KTX_Reservation/modify/{id}")
+    @GetMapping("/modify/{id}")
     public ModelAndView modifyArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
         session = httpServletRequest.getSession(true);
         String userEmail = (String)session.getAttribute("userId");

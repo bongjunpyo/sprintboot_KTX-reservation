@@ -35,7 +35,7 @@
 <header>
     <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
         <div class="container">
-            <a class="navbar-brand" href="KTX_Main">
+            <a class="navbar-brand" href="/KTX_Main">
                 <img src="https://raw.githubusercontent.com/bongjunpyo/sprintboot_KTX-reservation/e560ad0dc73e5c7b1ea09265662958022977aa87/ktx%EB%A1%9C%EA%B3%A0.png" alt="KTX logo" style="width: 4%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
@@ -92,9 +92,9 @@
         </section>
     </article>
     <input type="hidden" id="id" th:value="${article.id}">
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/modify/{id}(id=${article.id} ) }">수정</a>
+    <a class="btn btn-primary" th:href="@{/modify/{id}(id=${article.id} ) }">수정</a>
     <a class="btn btn-danger" onClick="deleteAction()">삭제</a>
-    <a class="btn btn-primary" th:href="@{/KTX_Reservation/Center}">목록으로 가기</a>
+    <a class="btn btn-primary" th:href="@{/Center}">목록으로 가기</a>
     <script>
         function deleteAction(){
             var id = document.getElementById("id").value;
@@ -105,7 +105,7 @@
                 method: "DELETE",
             })
             .then(() => {
-                location.replace("/KTX_Reservation/Center");
+                location.replace("/Center");
             });
         }
 

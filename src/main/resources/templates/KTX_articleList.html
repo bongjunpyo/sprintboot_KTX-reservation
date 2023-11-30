@@ -109,7 +109,7 @@
 
 <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
     <div class="container">
-        <a class="navbar-brand" href="KTX_Main">
+        <a class="navbar-brand" href="/KTX_Main">
             <img src="https://raw.githubusercontent.com/bongjunpyo/sprintboot_KTX-reservation/e560ad0dc73e5c7b1ea09265662958022977aa87/ktx%EB%A1%9C%EA%B3%A0.png" alt="KTX logo" style="width: 4%;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
@@ -129,7 +129,7 @@
                         <span th:text="${user + '님'}"></span>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link " href="KTX_Login">마이페이지</a></li>
+                <li class="nav-item"><a class="nav-link " href="/KTX_Login">마이페이지</a></li>
                 <li class="nav-item"><a class="nav-link " onclick="logout()">로그아웃</a></li>
 
                 <script>
@@ -170,7 +170,7 @@
             if (data === 'loggedIn') {
                 // 세션이 유효하고 로그인된 상태
                 console.log('사용자는 로그인되어 있습니다.');
-                window.location.href = '/KTX_Reservation/KTX_new-article';
+                window.location.href = '/KTX_new-article';
 
             } else {
                 // 세션이 없거나 로그인되지 않은 상태
@@ -192,7 +192,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text" th:text="${item.content}"></p>
-                    <a th:href="@{/KTX_Reservation/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+                    <a th:href="@{/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
                 </div>
             </div>
         </div>

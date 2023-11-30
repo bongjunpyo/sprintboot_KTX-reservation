@@ -59,7 +59,7 @@
                         <span th:text="${user + '님'}"></span>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link " href="KTX_List">예약현황</a></li>
+                <li class="nav-item"><a class="nav-link " href="/KTX_List">예약현황</a></li>
                 <li class="nav-item"><a class="nav-link " href="/KTX_Articles">고객센터</a></li>
             </ul>
         </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/KTX_Reservation/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+                <a th:href="@{/Center/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
             </div>
         </div>
     </div>
