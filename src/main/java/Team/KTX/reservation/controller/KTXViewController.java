@@ -147,9 +147,21 @@ public class KTXViewController {
     }
 
     @GetMapping("/information")
-    public String showInfo(){
+    public ModelAndView showInfo(Model model, HttpServletRequest httpServletRequest){
 
-        return "/KTX_Info";
+        HttpSession session = httpServletRequest.getSession(true);
+        String userEmail = (String)session.getAttribute("userId");
+        User user=userService.findByEmail(userEmail);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
+        ModelAndView mav = new ModelAndView();
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
+        mav.setViewName("KTX_Info");
+
+        return mav;
     }
 
 

@@ -79,17 +79,21 @@ public class ArticleViewController {
     }
 
     @GetMapping("/KTX_new-article")
-    public String createArticle(Model model, HttpSession session){
-
+    public ModelAndView createArticle(Model model, HttpServletRequest httpServletRequest, HttpSession session){
+        session = httpServletRequest.getSession(true);
         String userEmail=(String) session.getAttribute("userId");
         User user = userService.findByEmail(userEmail);
         if (user != null) {
             model.addAttribute("userName", user.getName());
         }
-
+        ModelAndView mav = new ModelAndView();
+        boolean isLoggedIn = session.getAttribute("userId") !=null;
+        mav.addObject("isLoggedIn",isLoggedIn);
         List<Article> articles = articleService.findAll();
         model.addAttribute("articles", articles);
-        return "newArticle";
+        mav.setViewName("newArticle");
+
+        return mav;
     }
 
     @GetMapping("/modify/{id}")
