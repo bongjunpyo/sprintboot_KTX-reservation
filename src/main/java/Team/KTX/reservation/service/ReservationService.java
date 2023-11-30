@@ -54,10 +54,10 @@ public class ReservationService {
         }
 
         // 여기서 response 객체를 반환하거나, 저장된 Reservation 객체를 반환할 수 있습니다.
-        }
+    }
 
-        // 여기서 response 객체를 반환하거나, 저장된 Reservation 객체를 반환할 수 있음
-        // 예를 들어, 저장된 Reservation을 반환하려면 return savedReservation; 사용
+    // 여기서 response 객체를 반환하거나, 저장된 Reservation 객체를 반환할 수 있음
+    // 예를 들어, 저장된 Reservation을 반환하려면 return savedReservation; 사용
 
     public List<Reservation> findAll(){
         List<Reservation> reservations = reservationRepository.findAll();
