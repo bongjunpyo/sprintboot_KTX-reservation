@@ -128,7 +128,7 @@ public class KTXViewController {
 
     }
 
-    @GetMapping("/KTX_Reservation/modifyR/{id}")
+    @GetMapping("/modifyR/{id}")
     public ModelAndView modifyReservation(Model model, HttpServletRequest httpServletRequest, HttpSession session, @PathVariable long id){
         session = httpServletRequest.getSession(true);
         String userEmail = (String)session.getAttribute("userId");
@@ -146,8 +146,8 @@ public class KTXViewController {
         return mav;
     }
 
-    @GetMapping("/KTX_Reservation/information")
-    public String showinfo(){
+    @GetMapping("/information")
+    public String showInfo(){
 
         return "/KTX_Info";
     }
