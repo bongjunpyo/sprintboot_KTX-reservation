@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>User Information</title>
+    <!-- 페이지 제목 -->
+    <title>User Information Update</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 부트스트랩 CDN 링크 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <style>
         * {
@@ -20,36 +22,63 @@
             color: black;
             margin-top: 100px; /* header와의 간격 */
         }
+
+        /* 입력 필드 스타일 추가 */
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* 수정 버튼 스타일 추가 */
+        #updateUserInfo {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #updateUserInfo:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
 <header>
+    <!-- 네비게이션 바 -->
     <div class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #2980b9;">
         <div class="container">
-            <a class="navbar-brand" href="/KTX_Main">
-                <img src="https://raw.githubusercontent.com/bongjunpyo/sprintboot_KTX-reservation/e560ad0dc73e5c7b1ea09265662958022977aa87/ktx%EB%A1%9C%EA%B3%A0.png" alt="KTX logo" style="width: 4%;">
-            </a>
+            <!-- 로고 링크 -->
+            <a class="navbar-brand" href="/KTX_Main">Go Together</a>
+            <!-- 네비게이션 바 토글 버튼 -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
                 <span class="collapse navbar-collapse" id="navbar-content"></span>
             </button>
+            <!-- 로그인 상태에 따른 네비게이션 바 메뉴 -->
             <div class="collapse navbar-collapse" th:unless="${isLoggedIn}">
                 <ul class="navbar-nav navbar-nav ms-auto"></ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link " href="/KTX_Login">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link " href="KTX_Login">로그인</a></li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" th:if="${isLoggedIn}">
                 <ul class="navbar-nav navbar-nav ms-auto"></ul>
                 <ul class="navbar-nav">
+                    <!-- 사용자 이름 환영 메시지 -->
                     <li class="nav-item">
                         <div th:each="user : ${userName}">
                             <span th:text="${user + '님 환영합니다!'}"></span>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link " href="/KTX_Login">내정보</a></li>
+                    <!-- 내정보, 로그아웃 메뉴 -->
+                    <li class="nav-item"><a class="nav-link " href="KTX_Login">내정보</a></li>
                     <li class="nav-item"><a class="nav-link " onclick="logout()">로그아웃</a></li>
                     <script>
-
+                        // 로그아웃 함수
                         function logout(){
                             fetch('/api/logout', {
                                     method:'POST'
@@ -62,24 +91,37 @@
                             })
                             .catch(error=> console.error('Error', error));
                         }
-
                     </script>
-
                 </ul>
             </div>
         </div>
     </div>
 </header>
 
+<!-- 사용자 정보 업데이트 폼 -->
 <div class="wrapper">
-        <input type="text" id="userEmail" placeholder="이메일" th:value="${UserEmail}">
-        <input type="text" id="userName" placeholder="이름" th:value="${userName}">
-        <input type="password" id="userPassword" placeholder="패스워드" th:value="${password}">
-        <input type="text" id="userAge" placeholder="나이" th:value="${age}">
-        <input type="text" id="userPhone" placeholder="전화번호" th:value="${phone}">
-        <button class="btn btn-primary" id="updateUserInfo" onclick="updateUserInfo()">정보 수정</button>
+    <!-- 기존 사용자 정보 레이블 -->
+    <p>아이디:</p>
+    <input type="text" id="userEmail" placeholder="이메일" th:value="${UserEmail}">
+    <p>이름: </p>
+    <input type="text" id="userName" placeholder="이름" th:value="${userName}">
+    <p>비밀번호: </p>
+    <input type="password" id="userPassword" placeholder="패스워드" th:value="${password}">
+    <p>나이: </p>
+    <input type="text" id="userAge" placeholder="나이" th:value="${age}">
+    <p>전화번호: </p>
+    <input type="text" id="userPhone" placeholder="전화번호" th:value="${phone}">
+    <!-- 수정할 사용자 정보 입력 필드 -->
+
+
+
+
+
+    <!-- 사용자 정보 업데이트 버튼 -->
+    <button class="btn btn-primary" id="updateUserInfo" onclick="updateUserInfo()">정보 수정</button>
 </div>
 
+<!-- 사용자 정보 업데이트 스크립트 -->
 <script>
     function updateUserInfo() {
         var userEmail = document.getElementById("userEmail").value;
@@ -88,6 +130,7 @@
         var userAge = document.getElementById("userAge").value;
         var userPhone = document.getElementById("userPhone").value;
 
+        // 서버에 사용자 정보 업데이트 요청
         fetch('/api/UserInfoModify', {
             method: 'PUT',
             headers: {
