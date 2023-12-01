@@ -90,7 +90,6 @@ public class ReservationService {
                 request.getTnumber(), request.getSnumber(), request.getCnumber(), request.getDepartureLocation(), request.getDestinationLocation(), request.getDepartureTime(), request.getArrivalTime());
 
         ReservationResponse response = new ReservationResponse();
-        Reservation savedReservation = new Reservation();
 
         if (existingReservation != null) {
             // 이미 예약된 좌석 처리
