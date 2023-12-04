@@ -25,15 +25,12 @@
        }
 
 
-       .nav-item{
-       pagging:20px;
-       }
-
-
            .wrapper {
                text-decoration-line: none;
                padding:20px;
-               margin:120px;
+               margin-top: 300px;
+               margin-left: 300px;
+               margin-right: -400px;
                text-align: center;
                color: black;
            }
@@ -70,44 +67,16 @@
            font-weight: bold;
            }
 
-
-       .caption-container {
-       text-align: center;
-       background-color: rgba(0, 0, 0, 0.8);
-       padding: 2px 16px;
-       color: white;
-       }
-
-       .numbertext {
-       color: #f2f2f2;
-       font-size: 12px;
-       padding: 8px 12px;
-       position: absolute;
-       top: 0;
-       }
         .bb{
         background-color: #3498db;
         border: 1px solid #3498db;
-        margin: auto;
-        display: table;
         margin-top: 30px;
-        float:right;
         }
-
-       body {
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           background-color: #f3f3f3; /* 연한 회색 배경 */
-           margin: 0;
-           padding: 0;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           height: 100vh;
-       }
 
 article {
            background-color: #fff; /* 흰색 배경 */
            padding: 40px;
+           justify-content: center;
            border-radius: 8px;
            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
            max-width: 1000px;
@@ -126,12 +95,12 @@ article {
 
 section {
     border-top: 1px solid #ccc;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 section p {
     text-align: left;
-     margin-top:15px;/* 내용을 왼쪽 정렬로 설정 */
+     margin-top:15px;
 }
 
 .bt{
@@ -142,7 +111,7 @@ section p {
 
        .p{
         float:right;
-        ma:10px;}
+        margin-top:10px;}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
@@ -222,15 +191,13 @@ section p {
     <article>
         <header>
             <h2 th:text="${article.title}"></h2>
-            <div th:text="'작성자 : '+${article.getWriter().getEmail()}"></div>
+            <div th:text="'작성자 : '+${article.getWriter().getName()+'님'}"></div>
             <div class="p" th:text="'작성일 : '+${article.formattedCreateDate}"></div>
         </header>
         <section>
             <p th:text="${article.content}"></p>
         </section>
     </article>
-
-
     <input type="hidden" id="id" th:value="${article.id}">
     <a class="bt btn btn-primary" onclick="checkLogin2()">수정</a>
     <script>
