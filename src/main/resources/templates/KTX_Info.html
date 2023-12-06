@@ -27,10 +27,13 @@
 
                .wrapper {
                    text-decoration-line: none;
-                   padding:30px;
-                   margin-top:130px;
-                   margin-left:40px;
-                   color: black;
+            padding: 30px;
+            margin-top: 130px;
+            margin-left: auto; /* 가운데 정렬을 위해 margin-left:auto 추가 */
+            margin-right: auto; /* 가운데 정렬을 위해 margin-right:auto 추가 */
+            max-width: 900px; /* 텍스트 최대 너비 설정 (설정하지 않으면 화면 전체 너비까지 늘어날 수 있음) */
+            color: black;
+            text-align: justify; /* 텍스트를 양쪽 정렬로 변경 */
                }
 
                .form-container {
@@ -65,8 +68,13 @@
                .font{
                font-weight: bold;
                }
+        h3 {
+            margin-bottom: 35px; /* h3 태그 아래 여백 조절 */
+        }
         .li{
-        margin-top:20px;}
+        margin-top:20px;
+        font-weight: bold;
+        }
         .re{
         color:black;}
 
@@ -149,13 +157,13 @@
     <ul>
         <li class="li">예매처</li>
         <ul class="o">
-            <li>홈페이지(www.GTH.com),승차권 발매기, 역(전철역 제외), 네이버 기차에매, 카카오T, 승차권 판매대리점</li>
+            <li>홈페이지(www.GTH.com),승차권 발매기, 역(전철역 제외), 네이버 기차예매, 카카오T, 승차권 판매대리점</li>
         </ul>
         <li class="li">예매기간</li>
         <ul class="o">
             <li>출발 1개월 전07시부터 출발 20분 전까지 구매할 수 있습니다.</li>
             <li>예) 3월 28일 승차권은 2월 28일부터 구매 가능하며, 4월 30일 승차권은 3월 30일부터 구매 가능합니다.</li>
-            <li>* 2월 마지막날이 29일(윤년)인 경우, 2월 29일에 승차일자 3월 29,30,31일 승차구너 구매가 가능합니다.</li>
+            <li>* 2월 마지막날이 29일(윤년)인 경우, 2월 29일에 승차일자 3월 29,30,31일 승차권 구매가 가능합니다.</li>
         </ul>
         <li class="li">결제/발권</li>
         <ul class="o">
