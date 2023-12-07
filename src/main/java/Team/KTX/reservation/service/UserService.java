@@ -79,18 +79,28 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUserInfo(HttpServletRequest httpServletRequest, UpdateUserRequest request) {
+    public UserResponse updateUserInfo(HttpServletRequest httpServletRequest, UpdateUserRequest request) {
         HttpSession session = httpServletRequest.getSession(true);
         String userEmail = (String) session.getAttribute("userId");
         User user = userRepository.findByEmail(userEmail);
+        UserResponse response = new UserResponse();
 
         if (user != null) {
             user.setEmail(request.getEmail());
+            if (!isValidPassword(request.getPassword())) {
+                response.setSuccess(false);
+                response.setMessage("비밀번호는 8자 이상이어야 하며, 특수 문자(#, %, !, $, @, *)를 포함해야 합니다.");
+                return response;
+            }
             user.setPassword(request.getPassword());
             user.setName(request.getName());
             user.setAge(request.getAge());
             user.setPhone(request.getPhone());
-            return userRepository.save(user);
+            response.setSuccess(true);
+            response.setMessage("회원가입이 완료되었습니다!");
+            userRepository.save(user);
+            return response;
+
         } else {
             return null;
         }

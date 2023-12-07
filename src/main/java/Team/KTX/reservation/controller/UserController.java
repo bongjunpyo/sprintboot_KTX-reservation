@@ -68,12 +68,12 @@ public class UserController {
     }
 
     @PutMapping("/api/UserInfoModify")
-    public ResponseEntity<User> updateUser(@RequestBody UpdateUserRequest request, HttpServletRequest httpServletRequest) {
-        User updatedUser = userService.updateUserInfo(httpServletRequest, request);
-        if (updatedUser != null) {
-            return ResponseEntity.ok(updatedUser);
+    public ResponseEntity<UserResponse> updateUser(@RequestBody UpdateUserRequest request, HttpServletRequest httpServletRequest) {
+        UserResponse response = userService.updateUserInfo(httpServletRequest, request);
+        if (response.isSuccess()) {
+            return ResponseEntity.ok().body(response);
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.ok().body(response);
         }
 
 

@@ -164,9 +164,9 @@
 </header>
 
 <nav>
-    <a onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
+    <a onclick="checkLogin1()" style="cursor: pointer;">예약현황</a>
     <script>
-        function checkLogin() {
+        function checkLogin1() {
         fetch('/api/session-status')
         .then(response => response.text())
         .then(data => {
