@@ -29,7 +29,7 @@
                    text-decoration-line: none;
                    padding:20px;
                    margin:120px;
-                   margin-top:250px;
+                   margin-top:150px;
                    text-align: center;
                    color: black;
                }
@@ -150,6 +150,17 @@
      .nav-item{
             pagging:20px;
             }
+     .ar1{
+         font-weight: bold;
+    color: black; /* 페이지 헤더 컬러와 일관성을 갖추기 */
+    text-align: center;
+        }
+     .ar2{
+         font-weight: bold;
+    color: black; /* 페이지 헤더 컬러와 일관성을 갖추기 */
+    margin-bottom: 80px; /* 간격 늘리기 */
+    text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -223,6 +234,8 @@
 </nav>
 
 <div class="wrapper">
+    <h3 class="ar1">고객센터</h3>
+    <h6 class="ar2">글을 작성해주세요.</h6>
     <input id="title" type="text" class="form-control" placeholder="글제목">
     <textarea id="content" class="form-control" placeholder="글내용" cols="30" rows="10"></textarea>
     <button id="submit" class="btn btn-primary">등록</button>
