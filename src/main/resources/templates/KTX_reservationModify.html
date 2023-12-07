@@ -11,7 +11,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-           body{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+           body{
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+           }
 
 
            .navbar-nav {
@@ -35,13 +38,14 @@
                margin:120px;
                text-align: center;
                color: black;
+               font-size: 17px;
            }
 
            .form-container {
                display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px; /* 여백 추가 */
+    margin-top: 20px; /* 여백 추가 */
            }
 
            nav {
@@ -81,7 +85,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
 }
+
 
 .label {
     font-size: 24px; /* Increase label font size */
@@ -100,7 +108,7 @@
 .button {
     background-color: #3498db;
     color: white;
-    padding: 15px 30px; /* Increase button padding */
+    padding: 15px 50px; /* Increase button padding */
     border: none;
     cursor: pointer;
     font-size: 20px; /* Increase button font size */
@@ -110,7 +118,12 @@
 .button:hover {
     background-color: #2980b9;
 }
-
+.page-label {
+    font-size: 28px; /* 여기를 조절하여 원하는 크기로 변경하세요 */
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 20px;
+}
 
 
     </style>
@@ -187,13 +200,14 @@
 
 <div class="wrapper">
     <div class="form-container">
+
         <label for="trainNumber">열차 번호</label>
         <select id="trainNumber" name="trainNumber">
-            <option value="KTX001">KTX001</option>
-            <option value="KTX002">KTX002</option>
-            <option value="KTX003">KTX003</option>
-            <option value="KTX004">KTX004</option>
-            <option value="KTX005">KTX005</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
         </select><br>
 
         <label for="CarNumber">호차 번호</label>
@@ -239,11 +253,11 @@
 
         <label for="tion">출발시간 ~ 도착시간</label>
         <select id="tion" name="tion">
-            <option value="10:00,14:00">10:00~14:00</option>
-            <option value="11:00,15:00">11:00~15:00</option>
-            <option value="12:00,16:00">12:00~16:00</option>
-            <option value="13:00,17:00">13:00~17:00</option>
-            <option value="14:00,18:00">14:00~18:00</option>
+            <option value="10:00,11:00">10:00~11:00</option>
+            <option value="11:00,12:00">11:00~12:00</option>
+            <option value="12:00,13:00">12:00~13:00</option>
+            <option value="13:00,14:00">13:00~14:00</option>
+            <option value="14:00,15:00">14:00~15:00</option>
         </select><br>
         <input id="id" type="hidden" th:value="${reservation.id}">
         <button type="button" class="btn btn-primary" onclick="modifyReservation()">예약 수정</button>

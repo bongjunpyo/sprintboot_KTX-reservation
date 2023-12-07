@@ -78,13 +78,15 @@
     background-size: cover; /* 배경 이미지 크기를 커버로 조정 */
     background-position: center; /* 배경 이미지를 가운데 정렬 */
     color: black; /* 글자 색상을 흰색으로 설정 */
-    font-weight: 750;
+    font-weight: 800;
          transition: transform 0.3s ease;
          text-align: center; /* 가운데 정렬 */
     display: flex; /* 플렉스 박스 사용 */
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
+    opacity: 0.78;
      }
+
      .card:hover {
          transform: translateY(-5px);
          box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -92,6 +94,7 @@
      .card-body {
          padding: 20px;
      }
+
      h3{
          text-align: center;
          margin-top:170px;
@@ -109,7 +112,7 @@
      display: table;
      margin-top: 5%
      }
-        .re{color:black;}
+
     </style>
 </head>
 <body>
@@ -156,7 +159,7 @@
 </header>
 
 <nav>
-    <a class="re" onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
+    <a onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
     <script>
         function checkLogin() {
         fetch('/api/session-status')
@@ -180,7 +183,7 @@
     }
     </script>
     <a href="/information">이용안내</a>
-    <a href="/Center">고객센터</a>
+    <a class="ar" href="/Center">고객센터</a>
 </nav>
 
 </header>
