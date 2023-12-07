@@ -74,7 +74,16 @@
          border-radius: 10px;
          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
          background-color: #f8f9fa;
+         background-image: url('https://img.freepik.com/free-vector/train-background-crossing-a-beautiful-landscape_23-2147598747.jpg?size=626&ext=jpg&ga=GA1.1.961685895.1699361515&semt=ais'); /* 이미지 경로로 변경 */
+    background-size: cover; /* 배경 이미지 크기를 커버로 조정 */
+    background-position: center; /* 배경 이미지를 가운데 정렬 */
+    color: black; /* 글자 색상을 흰색으로 설정 */
+    font-weight: 750;
          transition: transform 0.3s ease;
+         text-align: center; /* 가운데 정렬 */
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
      }
      .card:hover {
          transform: translateY(-5px);
@@ -88,6 +97,9 @@
          margin-top:170px;
          margin-bottom:50px;
          font-weight:bold;
+     }
+     h5{
+     font-weight: bold;
      }
 
      .bb{
