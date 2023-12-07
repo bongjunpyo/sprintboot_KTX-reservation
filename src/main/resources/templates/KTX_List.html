@@ -109,6 +109,7 @@
      display: table;
      margin-top: 5%
      }
+        .re{color:black;}
     </style>
 </head>
 <body>
@@ -155,7 +156,7 @@
 </header>
 
 <nav>
-    <a onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
+    <a class="re" onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
     <script>
         function checkLogin() {
         fetch('/api/session-status')
@@ -179,7 +180,7 @@
     }
     </script>
     <a href="/information">이용안내</a>
-    <a class="ar" href="/Center">고객센터</a>
+    <a href="/Center">고객센터</a>
 </nav>
 
 </header>
