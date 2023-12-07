@@ -67,7 +67,7 @@
                }
         .li{
         margin-top:20px;}
-        .re{
+        .in{
         color:black;}
 
     </style>
@@ -117,7 +117,7 @@
 </header>
 
 <nav>
-    <a class="re" onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
+    <a onclick="checkLogin()" style="cursor: pointer;">예약현황</a>
     <script>
         function checkLogin() {
         fetch('/api/session-status')
@@ -140,7 +140,7 @@
         });
     }
     </script>
-    <a href="/information">이용안내</a>
+    <a class="in" href="/information">이용안내</a>
     <a href="/Center">고객센터</a>
 </nav>
 
