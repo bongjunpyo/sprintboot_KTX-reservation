@@ -189,11 +189,11 @@
     <div class="form-container">
         <label for="trainNumber">열차 번호</label>
         <select id="trainNumber" name="trainNumber">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="KTX001">KTX001</option>
+            <option value="KTX002">KTX002</option>
+            <option value="KTX003">KTX003</option>
+            <option value="KTX004">KTX004</option>
+            <option value="KTX005">KTX005</option>
         </select><br>
 
         <label for="CarNumber">호차 번호</label>
@@ -239,11 +239,11 @@
 
         <label for="tion">출발시간 ~ 도착시간</label>
         <select id="tion" name="tion">
-            <option value="10:00,11:00">10:00~11:00</option>
-            <option value="11:00,12:00">11:00~12:00</option>
-            <option value="12:00,13:00">12:00~13:00</option>
-            <option value="13:00,14:00">13:00~14:00</option>
-            <option value="14:00,15:00">14:00~15:00</option>
+            <option value="10:00,14:00">10:00~14:00</option>
+            <option value="11:00,15:00">11:00~15:00</option>
+            <option value="12:00,16:00">12:00~16:00</option>
+            <option value="13:00,17:00">13:00~17:00</option>
+            <option value="14:00,18:00">14:00~18:00</option>
         </select><br>
         <input id="id" type="hidden" th:value="${reservation.id}">
         <button type="button" class="btn btn-primary" onclick="modifyReservation()">예약 수정</button>
